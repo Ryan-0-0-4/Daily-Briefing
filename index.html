@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Intelligence Briefing — March 30, 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif&family=JetBrains+Mono:wght@400;600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0a0a12;color:#e2e8f0;font-family:'Inter',sans-serif;line-height:1.7}
+  .wrap{max-width:800px;margin:0 auto;padding:48px 24px 80px}
+  .badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;font-weight:700;padding:3px 10px;border-radius:3px}
+  .badge-red{background:rgba(233,69,96,.12);color:#e94560}
+  .badge-dim{color:#475569;letter-spacing:.1em;margin-left:8px}
+  h1{font-family:'Instrument Serif',Georgia,serif;font-size:40px;font-weight:400;color:#f8fafc;margin:10px 0 0;line-height:1.15}
+  h1 span{color:#e94560}
+  .subtitle{font-size:14px;color:#64748b;margin-top:10px}
+  .date-line{font-family:'JetBrains Mono',monospace;font-size:12px;color:#475569;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06)}
+  .numbers{display:flex;gap:1px;margin:36px 0;background:rgba(255,255,255,.04);border-radius:10px;overflow:hidden;flex-wrap:wrap}
+  .num-card{flex:1;min-width:120px;padding:16px 12px;background:#0a0a12;text-align:center}
+  .num-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:#64748b;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+  .num-val{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600}
+  .num-change{font-size:11px;margin-top:4px}
+  .up{color:#ef4444}.down{color:#22c55e}.neutral{color:#94a3b8}
+
+  /* Sector Headers */
+  .sector{margin:48px 0 20px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.06)}
+  .sector-icon{font-size:18px;margin-right:8px}
+  .sector h2{font-family:'Instrument Serif',Georgia,serif;font-size:26px;font-weight:400;color:#f8fafc;display:flex;align-items:center}
+  .sector-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:#475569;margin-top:4px}
+
+  /* Stories */
+  .story{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:8px;margin-bottom:16px;overflow:hidden}
+  .story-header{padding:20px 24px;cursor:pointer;display:flex;gap:14px;align-items:flex-start}
+  .story-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:#475569;min-width:22px;padding-top:4px}
+  .story-body{flex:1}
+  .imp-badge{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;padding:2px 8px;border-radius:3px;display:inline-block;margin-right:8px;margin-bottom:8px}
+  .imp-critical{color:#ef4444;background:rgba(239,68,68,.1)}
+  .imp-high{color:#f59e0b;background:rgba(245,158,11,.1)}
+  .imp-medium{color:#3b82f6;background:rgba(59,130,246,.1)}
+  .tag{font-family:'JetBrains Mono',monospace;font-size:10px;padding:1px 7px;border-radius:3px;display:inline-block;margin-right:6px;margin-bottom:8px}
+  .tag-red{color:#e94560;border:1px solid rgba(233,69,96,.3)}
+  .tag-orange{color:#fb923c;border:1px solid rgba(251,146,60,.3)}
+  .tag-blue{color:#50c4ed;border:1px solid rgba(80,196,237,.3)}
+  .tag-purple{color:#a78bfa;border:1px solid rgba(167,139,250,.3)}
+  .tag-green{color:#4ecdc4;border:1px solid rgba(78,205,196,.3)}
+  .tag-yellow{color:#facc15;border:1px solid rgba(250,204,21,.3)}
+  .tag-gray{color:#94a3b8;border:1px solid rgba(148,163,184,.3)}
+  h3{font-family:'Instrument Serif',Georgia,serif;font-size:20px;font-weight:400;color:#f1f5f9;line-height:1.35}
+  .summary{font-size:14px;color:#94a3b8;margin-top:8px}
+  .story-detail{padding:0 24px 24px 60px;border-top:1px solid rgba(255,255,255,.04);display:none}
+  .story.open .story-detail{display:block}
+  .story.open{border-color:rgba(255,255,255,.1)}
+  .detail-section{padding-top:18px}
+  .detail-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+  .label-red{color:#e94560}.label-blue{color:#50c4ed}
+  .detail-text{font-size:14px;color:#cbd5e1;line-height:1.7}
+  .context-block{margin-top:14px}
+  .context-title{font-size:13px;color:#e2e8f0;font-weight:600;margin-bottom:4px}
+  .context-text{font-size:14px;color:#94a3b8;line-height:1.7}
+  .takeaway{margin-top:14px;padding:10px 14px;background:rgba(80,196,237,.06);border-left:2px solid #50c4ed;border-radius:0 6px 6px 0}
+  .takeaway p{font-size:13px;color:#50c4ed;font-weight:500}
+  .toggle{color:#475569;font-size:16px;transition:transform .3s;flex-shrink:0;user-select:none}
+  .story.open .toggle{transform:rotate(180deg)}
+  .bl-critical{border-left:3px solid #ef4444}
+  .bl-high{border-left:3px solid #f59e0b}
+  .bl-medium{border-left:3px solid #3b82f6}
+  .footer{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.06);font-family:'JetBrains Mono',monospace;font-size:11px;color:#334155;text-align:center}
+  @media(max-width:600px){h1{font-size:30px}.num-val{font-size:16px}.story-header{padding:16px}.story-detail{padding:0 16px 16px 16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div><span class="badge badge-red">DAILY INTELLIGENCE</span><span class="badge badge-dim">MULTI-SECTOR</span></div>
+  <h1>Daily Intelligence <span>Briefing</span></h1>
+  <p class="subtitle">AI-curated news across Energy, Politics, Tech, and Business — with context that matters.</p>
+  <p class="date-line">Monday, March 30, 2026 · 16 stories across 4 sectors · ranked by impact</p>
+</header>
+
+<!-- KEY NUMBERS -->
+<div class="numbers">
+  <div class="num-card"><div class="num-label">Brent Crude</div><div class="num-val up">$110/b</div><div class="num-change up">▲ Hormuz fears</div></div>
+  <div class="num-card"><div class="num-label">S&P 500</div><div class="num-val up">6,369</div><div class="num-change up">▼ 5-week decline</div></div>
+  <div class="num-card"><div class="num-label">Henry Hub</div><div class="num-val neutral">$3.80</div><div class="num-change neutral">— /MMBtu</div></div>
+  <div class="num-card"><div class="num-label">Dow Jones</div><div class="num-val up">45,167</div><div class="num-change up">▼ correction</div></div>
+  <div class="num-card"><div class="num-label">Bitcoin</div><div class="num-val up">$66,000</div><div class="num-change up">▼ -3.6%</div></div>
+  <div class="num-card"><div class="num-label">Gold</div><div class="num-val down">$5,016</div><div class="num-change down">▲ safe haven</div></div>
+</div>
+
+<!-- ==================== ENERGY & GAS ==================== -->
+<div class="sector">
+  <h2><span class="sector-icon">⚡</span> Energy & Gas</h2>
+  <div class="sector-count">4 stories</div>
+</div>
+
+<div class="story open bl-critical" onclick="this.classList.toggle('open')">
+  <div class="story-header">
+    <span class="story-num">01</span>
+    <div class="story-body">
+      <div><span class="imp-badge imp-critical">◆ CRITICAL</span><span class="tag tag-red">oil</span><span class="tag tag-purple">geopolitics</span><span class="tag tag-blue">LNG</span></div>
+      <h3>Strait of Hormuz Crisis: Largest Energy Disruption Since 1973</h3>
+      <p class="summary">Iran's effective closure of the Strait of Hormuz has removed ~20% of global oil supply from the market. Tanker traffic dropped over 90%, 150+ vessels stranded, and Brent peaked at $126/bbl. The IEA calls it the "greatest global energy security challenge in history."</p>
+    </div><span class="toggle">▾</span>
+  </div>
+  <div class="story-detail">
+    <div class="detail-section"><div class="detail-label label-red">Why It Matters</div><p class="detail-text">Every sector of the energy industry is affected. Gulf producers are shutting in wells as storage fills — collectively losing 10+ million bpd. Qatar halted LNG exports after drone strikes on Ras Laffan, with repairs estimated at 5 years. Oil executives at CERAWeek warned the Strait must reopen by mid-April or disruptions will double. The Dallas Fed estimates each quarter of closure costs 2.9 percentage points of annualized global GDP growth.</p></div>
+    <div class="detail-section"><div class="detail-label label-blue">Background Context</div>
+      <div class="context-block"><div class="context-title">The Timeline</div><p class="context-text">The U.S. launched "Operation Epic Fury" on Feb 28. Iran retaliated and declared the Strait closed on March 4. The IRGC has carried out 21+ confirmed attacks on merchant vessels. Insurance withdrawal created a de facto commercial blockade. On March 26, Iran allowed ships from China, Russia, India, Iraq, and Pakistan to transit. Trump extended pause on striking Iran's energy infrastructure to April 6.</p></div>
+      <div class="context-block"><div class="context-title">Who's Most Affected</div><p class="context-text">Asia is ground zero — China gets a third of its oil through Hormuz, India sources ~53% of oil imports from the region. Pakistan, Thailand, and Australia already report fuel shortages. South Korea restricted naphtha exports. Airlines canceled flights across Southeast Asia and Oceania.</p></div>
+      <div class="takeaway"><p>↳ Bottom line: The world has roughly 2-3 weeks of buffer before disruptions escalate sharply. Mid-April is the real deadline.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="story bl-high" onclick="this.classList.toggle('open')">
+  <div class="story-header">
+    <span class="story-num">02</span>
+    <div class="story-body">
+      <div><span class="imp-badge imp-high">▲ HIGH</span><span class="tag tag-orange">OPEC+</span><span class="tag tag-red">production</span></div>
+      <h3>OPEC+ Resumes Output Increases — But Spare Capacity Is Trapped</h3>
+      <p class="summary">OPEC+ agreed on March 1 to add 206,000 bpd starting in April. However, most spare capacity (~3.5M bpd) sits in Saudi Arabia and UAE — behind the closed Strait. Analysts say the decision is "more about signaling than about volume."</p>
+    </div><span class="toggle">▾</span>
+  </div>
+  <div class="story-detail">
+    <div class="detail-section"><div class="detail-label label-red">Why It Matters</div><p class="detail-text">Russia continues overproducing its quota (9.2-9.5M bpd vs. ~9.0M target), undermining alliance credibility. Saudi Arabia's East-West Pipeline and UAE's Fujairah pipeline offer partial alternatives, but terminal infrastructure limits throughput. The next meeting on April 5 will be pivotal for assessing whether any meaningful volume can reach market.</p></div>
+    <div class="takeaway"><p>↳ Bottom line: OPEC+ cannot deploy most of its spare capacity until shipping resumes. The production increase is largely symbolic.</p></div>
+  </div>
+</div>
+
+<div class="story bl-high" onclick="this.classList.toggle('open')">
+  <div class="story-header">
+    <span class="story-num">03</span>
+    <div class="story-body">
+      <div><span class="imp-badge imp-high">▲ HIGH</span><span class="tag tag-blue">LNG</span><span class="tag tag-gray">U.S. production</span></div>
+      <h3>U.S. LNG Exports Surge as Qatar Goes Offline — New Capacity Racing Online</h3>
+      <p class="summary">QatarEnergy declared force majeure on all LNG exports. Meanwhile, major U.S. projects are coming online: Golden Pass Train 1 (March), Plaquemines Phase 2, and Corpus Christi Stage 3. Cheniere CEO says they're running at peak production to meet displaced Asian demand.</p>
+    </div><span class="toggle">▾</span>
+  </div>
+  <div class="story-detail">
+    <div class="detail-section"><div class="detail-label label-red">Why It Matters</div><p class="detail-text">The pre-war thesis of a 2026 LNG surplus has been upended. Europe sources 12-14% of LNG from Qatar via Hormuz. QatarEnergy has delayed its North Field East expansion. U.S. LNG exporters are now the biggest strategic beneficiaries — long-term U.S. contracts are far more valuable. Total U.S. LNG capacity under construction: 16 bcf/d through 2030.</p></div>
+    <div class="takeaway"><p>↳ Bottom line: The crisis permanently reshapes how buyers think about LNG supply security. U.S. exporters win, but can't fill the gap alone.</p></div>
+  </div>
+</div>
+
+<div class="story bl-medium" onclick="this.classList.toggle('open')">
+  <div class="story-header">
+    <span class="story-num">04</span>
+    <div class="story-body">
+      <div><span class="imp-badge imp-medium">● MEDIUM</span><span class="tag tag-green">gas</span><span class="tag tag-gray">U.S. production</span></div>
+      <h3>U.S. Natural Gas Production Hit Record 118.5 Bcf/d — Domestic Prices Insulated</h3>
+      <p class="summary">EIA reports record U.S. gas production in 2025, forecast to reach 120.8 Bcf/d in 2026. Henry Hub remains relatively insulated at ~$3.80/MMBtu while European and Asian prices spike. Dallas Fed business activity index jumped from -6.2 to +21.0 in Q1 2026.</p>
+    </div><span class="toggle">▾</span>
+  </div>
+  <div class="story-detail">
+    <div class="detail-section"><div class="detail-label label-red">Why It Matters</div><p class="detail-text">Appalachia leads at 36.6 Bcf/d (31% of total), boosted by the Mountain Valley Pipeline. Permian gas growth is driven by associated gas from oil — breakeven prices sit around $61-62/bbl. Industry survey respondents expect WTI at $74/bbl by year-end, well below current spot, suggesting the war premium is expected to fade.</p></div>
+    <div class="takeaway"><p>↳ Bottom line: U.S. gas production strength is a strategic asset, but domestic insulation depends on how long the crisis lasts.</p></div>
+  </div>
+</div>
+
+<!-- ==================== POLITICS & GEOPOLITICS ==================== -->
+<div class="sector">
+  <h2><span class="sector-icon">🌍</span> Politics & Geopolitics</h2>
+  <div class="sector-count">4 stories</div>
+</div>
+
+<div class="story bl-critical" onclick="this.classList.toggle('open')">
+  <div class="story-header">
+    <span class="story-num">05</span>
+    <div class="story-body">
+      <div><span class="imp-badge imp-critical">◆ CRITICAL</span><span class="tag tag-purple">Iran war</span><span class="tag tag-red">Middle East</span></div>
+      <h3>U.S.-Iran Conflict Enters Fifth Week — Trump Extends Pause on Energy Strikes</h3>
+      <p class="summary">Trump extended the pause on striking Iran's energy infrastructure to April 6, calling talks "very good." However, Iran rejected a ceasefire proposal, stating it "does not accept" the process. U.S. is moving thousands of new troops to the region. Pakistan is hosting talks with Egypt, Saudi Arabia, and Turkey on reopening the strait.</p>
+    </div><span class="toggle">▾</span>
+  </div>
+  <div class="story-detail">
+    <div class="detail-section"><div class="detail-label label-red">Why It Matters</div><p class="detail-text">The war has caused what analysts describe as a systemic collapse of the Gulf Cooperation Council economic model. Iraq, Qatar, UAE, and potentially Saudi Arabia could see 30% drops in annualized GDP. The closure has disrupted 80% of the GCC's food imports, creating humanitarian concerns alongside economic ones. Former Defense Secretary Mattis warned that "the Iranians have a vote on when the war ends."</p></div>
+    <div class="detail-section"><div class="detail-label label-blue">Background Context</div>
+      <div class="context-block"><div class="context-title">Diplomatic Channels</div><p class="context-text">Iran allowed ships from 5 nations (China, Russia, India, Iraq, Pakistan) to transit on March 26. Malaysia and Thailand also gained access. The UN called for the strait to be opened. China criticized both the war and Iran's attacks on other countries. A $580M insider trading investigation emerged after oil futures dropped moments before Trump announced a negotiation pause.</p></div>
+      <div class="takeaway"><p>↳ Bottom line: April 6 is the next critical date. If Trump resumes strikes on Iran's energy infrastructure, escalation is likely.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="story bl-high" onclick="this.classList.toggle('open')">
+  <div class="story-header">
+    <span class="story-num">06</span>
+    <div class="story-body">
+      <div><span class="imp-badge imp-high">▲ HIGH</span><span class="tag tag-purple">China</span><span class="tag tag-green">policy</span></div>
+      <h3>China Adopts 15th Five-Year Plan — AI Self-Reliance and Tech Sovereignty Central</h3>
+      <p class="summary">China formally adopted its 15th Five-Year Plan (2026-2030) during the Two Sessions, reinforcing technology self-reliance as a strategic priority. AI assets — models, data, compute infrastructure — are treated as national security matters across major powers.</p>
+    </div><span class="toggle">▾</span>
+  </div>
+  <div class="story-detail">
+    <div class="detail-section"><div class="detail-label label-red">Why It Matters</div><p class="detail-text">The geopolitics around AI is driving market fragmentation globally. The EU launched its AI Continent Action Plan and Cloud & AI Development Act. The U.S. has its AI Action Plan channeling government investment into domestic infrastructure. Middle powers like India, Brazil, and Gulf states are charting distinct paths to "AI sovereignty." For businesses, this means navigating an increasingly fractured digital ecosystem where compliance, data residency, and technology partnerships are geopolitically constrained.</p></div>
+    <div class="takeaway"><p>↳ Bottom line: The age of borderless AI deployment is ending. Companies must plan for a fragmented regulatory and infrastructure landscape.</p></div>
+  </div>
+</div>
+
+<div class="story bl-high" onclick="this.classList.toggle('open')">
+  <div class="story-header">
+    <span class="story-num">07</span>
+    <div class="story-body">
+      <div><span class="imp-badge imp-high">▲ HIGH</span><span class="tag tag-purple">elections</span><span class="tag tag-orange">Latin America</span></div>
+      <h3>U.S. Midterms Loom as Global Political Calendar Heats Up</h3>
+      <p class="summary">2026 features major elections across the globe — U.S. midterms in November, plus votes in Russia, Israel, Brazil, and Hungary. In Latin America, disappointing results under left-leaning incumbents are creating momentum for right-wing candidates promising market-friendly reforms.</p>
+    </div><span class="toggle">▾</span>
+  </div>
+  <div class="story-detail">
+    <div class="detail-section"><div class="detail-label label-red">Why It Matters</div><p class="detail-text">Domestic politics are playing an outsized role in foreign policy. EU governments grapple with rising populism, political fragmentation, immigration, and defense spending pressures. The Trump administration's actions in Venezuela and Iran reflect a focus on great-power competition in the Western Hemisphere. For investors, this means structurally higher inflation, lower growth, and more differentiated outcomes than the globalization era.</p></div>
+    <div class="takeaway"><p>↳ Bottom line: Political risk is a core investment variable in 2026. Scenario planning and flexibility are essential.</p></div>
+  </div>
+</div>
+
+<div class="story bl-medium" onclick="this.classList.toggle('open')">
+  <div class="story-header">
+    <span class="story-num">08</span>
+    <div class="story-body">
+      <div><span class="imp-badge imp-medium">● MEDIUM</span><span class="tag tag-green">supply chains</span><span class="tag tag-gray">trade</span></div>
+      <h3>Global Supply Chain Stress Index Elevated — Fertilizer, Plastics, Aluminum Hit</h3>
+      <p class="summary">The World Bank's Global Supply Chain Stress Index shows elevated shipping delays. Beyond oil, the Hormuz closure disrupts ~45% of global sulfur, 30% of ammonia, 20% of raw aluminum exports, and half the world's urea. Fertilizer prices up 50% since the war began.</p>
+    </div><span class="toggle">▾</span>
+  </div>
+  <div class="story-detail">
+    <div class="detail-section"><div class="detail-label label-red">Why It Matters</div><p class="detail-text">The impact extends far beyond energy. Polyethylene (85% of Middle East exports transit Hormuz) affects packaging, auto components, and consumer goods. The garment industry relies on petrochemicals from the strait. The U.S. defense industry faces "near total" disruption of critical sulfur supplies. Spring planting season is threatened by fertilizer shortages — the UN negotiated humanitarian passage for fertilizer shipments on March 27.</p></div>
+    <div class="takeaway"><p>↳ Bottom line: This is not just an energy crisis — it's a broad commodities shock with inflation implications across every sector.</p></div>
+  </div>
+</div>
+
+<!-- ==================== TECH & AI ==================== -->
+<div class="sector">
+  <h2><span class="sector-icon">🤖</span> Tech & AI</h2>
+  <div class="sector-count">4 stories</div>
+</div>
+
+<div class="story bl-critical" onclick="this.classList.toggle('open')">
+  <div class="story-header">
+    <span class="story-num">09</span>
+    <div class="story-body">
+      <div><span class="imp-badge imp-critical">◆ CRITICAL</span><span class="tag tag-blue">AI models</span><span class="tag tag-green">frontier</span></div>
+      <h3>March 2026: The Month That Reshaped AI — 12+ Major Models in One Week</h3>
+      <p class="summary">The first week of March alone saw GPT-5.4, Claude Sonnet 4.6, Qwen 3.5, NVIDIA Nemotron 3 Super, and at least 8 other major releases. Open-source models now match frontier models at fractions of the cost. MCP crossed 97 million installs, cementing it as foundational AI infrastructure.</p>
+    </div><span class="toggle">▾</span>
+  </div>
+  <div class="story-detail">
+    <div class="detail-section"><div class="detail-label label-red">Why It Matters</div><p class="detail-text">The gap between proprietary and open-weight models has narrowed from years to months. Alibaba's Qwen 3.5 9B at $0.10/M tokens matches models 13x its size on graduate-level reasoning benchmarks. GPT-5.4 offers a 1.05M token context window with 33% fewer factual errors. NVIDIA GTC 2026 was dominated by production deployment case studies, not benchmarks — signaling agentic AI has moved from demo to production at enterprise scale.</p></div>
+    <div class="detail-section"><div class="detail-label label-blue">Background Context</div>
+      <div class="context-block"><div class="context-title">The Sora Shutdown Signal</div><p class="context-text">OpenAI quietly discontinued the Sora public API on March 24, citing unsustainable economics of video generation at scale. The cost per minute of high-quality video was "economically irreconcilable" with pricing users would pay. This forced a recalibration across the video AI sector about which generation workloads are viable.</p></div>
+      <div class="takeaway"><p>↳ Bottom line: The winners in 2026 aren't the biggest models — they're the companies building the best products on efficient, deployable foundations.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="story bl-high" onclick="this.classList.toggle('open')">
+  <div class="story-header">
+    <span class="story-num">10</span>
+    <div class="story-body">
+      <div><span class="imp-badge imp-high">▲ HIGH</span><span class="tag tag-blue">SoftBank</span><span class="tag tag-yellow">funding</span></div>
+      <h3>SoftBank Secures $40B War Chest for OpenAI — AI Capital Race Intensifies</h3>
+      <p class="summary">SoftBank secured a $40 billion bridge loan (JPMorgan, Goldman Sachs, Mizuho, SMBC, MUFG) running to March 2027. OpenAI has surpassed $25B in annualized revenue and is eyeing a potential IPO as early as late 2026. Anthropic is approaching $19B annualized.</p>
+    </div><span class="toggle">▾</span>
+  </div>
+  <div class="story-detail">
+    <div class="detail-section"><div class="detail-label label-red">Why It Matters</div><p class="detail-text">Balance-sheet strength is becoming a moat. The bar for competing in frontier AI is now tens of billions for models, compute, distribution, and infrastructure combined. For startups, product quality still matters, but capital intensity is reshaping competitive dynamics. Microsoft is merging its Copilot teams and building in-house frontier models to reduce dependence on external partners.</p></div>
+    <div class="takeaway"><p>↳ Bottom line: The AI industry is consolidating around a handful of players with massive capital backing. Independent startups must find niches or get acquired.</p></div>
+  </div>
+</div>
+
+<div class="story bl-high" onclick="this.classList.toggle('open')">
+  <div class="story-header">
+    <span class="story-num">11</span>
+    <div class="story-body">
+      <div><span class="imp-badge imp-high">▲ HIGH</span><span class="tag tag-purple">Google</span><span class="tag tag-gray">hardware</span></div>
+      <h3>Google's TurboQuant Algorithm Crashes Memory Chip Stocks — AI Hardware Reshuffled</h3>
+      <p class="summary">Google's new AI compression technology sent memory chip stocks tumbling. Micron fell 22% in 6 days from an all-time high. The breakthrough suggests software optimization can reduce hardware demand faster than expected, challenging the "AI infrastructure always wins" thesis.</p>
+    </div><span class="toggle">▾</span>
+  </div>
+  <div class="story-detail">
+    <div class="detail-section"><div class="detail-label label-red">Why It Matters</div><p class="detail-text">Investors had treated memory demand as one of the clearest downstream winners of AI. Google's advance shows that algorithmic efficiency can quickly reshuffle which hardware layers capture value. The AI stack is not a one-way bet — some component suppliers will get squeezed as better algorithms reduce hardware intensity. BTIG notes Micron hasn't had a comparable 6-day drop from a high since 1999.</p></div>
+    <div class="takeaway"><p>↳ Bottom line: AI infrastructure winners will not all rise together. Software advances can rapidly change the hardware value equation.</p></div>
+  </div>
+</div>
+
+<div class="story bl-medium" onclick="this.classList.toggle('open')">
+  <div class="story-header">
+    <span class="story-num">12</span>
+    <div class="story-body">
+      <div><span class="imp-badge imp-medium">● MEDIUM</span><span class="tag tag-purple">Meta</span><span class="tag tag-blue">Apple</span><span class="tag tag-green">legal</span></div>
+      <h3>Meta & Google Found Liable for Child Harm — Meta Cuts 700 Jobs, Pivots to AI</h3>
+      <p class="summary">Juries in California and New Mexico found Meta and Google liable for harms to children, awarding $6M in one case. Separately, Meta cut 700 roles while unveiling $921M executive stock packages to retain AI leadership. Apple announced a reimagined AI-powered Siri for March 2026 using Google's Gemini model.</p>
+    </div><span class="toggle">▾</span>
+  </div>
+  <div class="story-detail">
+    <div class="detail-section"><div class="detail-label label-red">Why It Matters</div><p class="detail-text">The child safety verdicts bypassed Section 230 by targeting platform design decisions rather than user content — setting precedent for a new wave of liability litigation. Meta's simultaneous layoffs and massive executive pay packages underscore the aggressive reallocation from social media and VR toward AI. Apple's strategy of partnering with Google's Gemini while maintaining privacy through Private Cloud Compute represents a unique approach to the AI assistant race.</p></div>
+    <div class="takeaway"><p>↳ Bottom line: Big Tech is simultaneously facing new legal accountability while racing to restructure around AI priorities.</p></div>
+  </div>
+</div>
+
+<!-- ==================== BUSINESS & MARKETS ==================== -->
+<div class="sector">
+  <h2><span class="sector-icon">📊</span> Business & Markets</h2>
+  <div class="sector-count">4 stories</div>
+</div>
+
+<div class="story bl-critical" onclick="this.classList.toggle('open')">
+  <div class="story-header">
+    <span class="story-num">13</span>
+    <div class="story-body">
+      <div><span class="imp-badge imp-critical">◆ CRITICAL</span><span class="tag tag-red">markets</span><span class="tag tag-orange">recession risk</span></div>
+      <h3>Dow Enters Correction, S&P Posts 5-Week Losing Streak — Stagflation Fears Rise</h3>
+      <p class="summary">The Dow fell into correction territory on March 27. S&P 500 closed at 6,369 — a seven-month low — posting its worst 5-week streak in four years. The Nasdaq entered correction territory (down 10%+ from high). CNN Fear & Greed Index hit "extreme fear." OECD forecast U.S. inflation at 4.2% for 2026, sharply up from the prior 2.8% projection.</p>
+    </div><span class="toggle">▾</span>
+  </div>
+  <div class="story-detail">
+    <div class="detail-section"><div class="detail-label label-red">Why It Matters</div><p class="detail-text">The 10-year Treasury yield hit 4.48% (highest since July), with the 30-year briefly touching 5%. U.S. CPI for March is estimated at 3.4% YoY, up from 2.4% in February — driven almost entirely by energy. The CBOE Volatility Index topped 30 for the first time since March 9. Energy is the only positive S&P 500 sector since the war began, up 31.8% YTD. Software stocks have been crushed — the iShares Software ETF is down 23% in 2026 on AI disruption fears.</p></div>
+    <div class="takeaway"><p>↳ Bottom line: Markets are pricing in a higher-for-longer oil shock combined with AI disruption across software. Energy and defense are the only clear winners.</p></div>
+  </div>
+</div>
+
+<div class="story bl-high" onclick="this.classList.toggle('open')">
+  <div class="story-header">
+    <span class="story-num">14</span>
+    <div class="story-body">
+      <div><span class="imp-badge imp-high">▲ HIGH</span><span class="tag tag-yellow">inflation</span><span class="tag tag-green">Fed</span></div>
+      <h3>Fed Holds Rates as Oil Shock Complicates Inflation Outlook</h3>
+      <p class="summary">The Fed kept rates unchanged. Philadelphia Fed President Paulson said above-target inflation makes her "more apprehensive about policy." Two-thirds of surveyed investors agree holding was the right call. But rising energy costs threaten to unwind inflation progress from 2025.</p>
+    </div><span class="toggle">▾</span>
+  </div>
+  <div class="story-detail">
+    <div class="detail-section"><div class="detail-label label-red">Why It Matters</div><p class="detail-text">The oil shock creates a classic central bank dilemma: cutting rates could fuel inflation, raising rates could tip the economy into recession. The 30-year mortgage rate climbed to 6.38%. The Beige Book noted businesses reporting "moderate" price increases, with 75% of Fed districts citing tariff contributions. Interest rate cuts that were expected earlier in 2026 are now likely delayed or reversed.</p></div>
+    <div class="takeaway"><p>↳ Bottom line: The Fed is stuck. Energy-driven inflation makes cuts unlikely while war-related uncertainty makes hikes risky.</p></div>
+  </div>
+</div>
+
+<div class="story bl-high" onclick="this.classList.toggle('open')">
+  <div class="story-header">
+    <span class="story-num">15</span>
+    <div class="story-body">
+      <div><span class="imp-badge imp-high">▲ HIGH</span><span class="tag tag-purple">defense</span><span class="tag tag-green">SpaceX</span></div>
+      <h3>Defense Stocks Surge, SpaceX IPO Rumors Intensify</h3>
+      <p class="summary">Defense companies are among the few market winners — Lockheed Martin, Northrop Grumman, and AeroVironment all surged since the war began. Shield AI reached multi-billion-dollar valuation. Meanwhile, SpaceX may file an IPO prospectus imminently, potentially raising $50B at a ~$1.8T valuation.</p>
+    </div><span class="toggle">▾</span>
+  </div>
+  <div class="story-detail">
+    <div class="detail-section"><div class="detail-label label-red">Why It Matters</div><p class="detail-text">AI defense companies are moving from niche to central players. Investors are rewarding firms combining software, autonomy, simulation, and government adoption. A SpaceX IPO at the rumored scale would be one of the largest in history and could reshape the broader market. ConcoPhillips is "pleading" with the Trump administration for military protection of U.S.-owned assets in Qatar.</p></div>
+    <div class="takeaway"><p>↳ Bottom line: Defense tech and energy are the two sectors benefiting from the current environment. Everything else is under pressure.</p></div>
+  </div>
+</div>
+
+<div class="story bl-medium" onclick="this.classList.toggle('open')">
+  <div class="story-header">
+    <span class="story-num">16</span>
+    <div class="story-body">
+      <div><span class="imp-badge imp-medium">● MEDIUM</span><span class="tag tag-gray">software</span><span class="tag tag-blue">AI disruption</span></div>
+      <h3>Software Stocks in Freefall as AI "SaaSpocalypse" Fears Deepen</h3>
+      <p class="summary">The iShares Software ETF has plunged 23% in 2026. Anthropic's Claude Cowork launch rattled software investors — enterprise software stocks slid as investors grappled with AI's potential to replace entire SaaS categories. Apollo's $15B credit fund hit with major redemption requests, partly due to software sector exposure.</p>
+    </div><span class="toggle">▾</span>
+  </div>
+  <div class="story-detail">
+    <div class="detail-section"><div class="detail-label label-red">Why It Matters</div><p class="detail-text">The narrative has shifted from "AI benefits all tech" to "AI disrupts software business models." JFrog fell 31% since January on AI disruption fears. Companies like Claude Cowork and GPT-5.4's computer use capabilities threaten to compress entire business functions into smaller, more technical roles. The Anthropic head of economics said they're "not yet seeing evidence of widespread displacement," but markets are pricing it in preemptively.</p></div>
+    <div class="takeaway"><p>↳ Bottom line: The market is repricing software companies for a world where AI agents can do much of what SaaS tools do today. Expect more pain before a bottom.</p></div>
+  </div>
+</div>
+
+<div class="footer">
+  Daily Intelligence Briefing · Generated by Claude AI · March 30, 2026<br>
+  Sources: EIA, Dallas Fed, Bloomberg, CNBC, CNN, OPEC, Kpler, Enerdata, EY, Wellington, Lazard, Reuters
+</div>
+
+</div>
+</body>
+</html>
