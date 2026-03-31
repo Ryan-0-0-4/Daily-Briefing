@@ -3,451 +3,255 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Intelligence Briefing — Tuesday, March 31, 2026</title>
+<title>THE WORLD AI NEWS — Daily Intelligence Briefing</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif&family=JetBrains+Mono:wght@400;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Azeret+Mono:wght@400;500;700&display=swap');
   *{margin:0;padding:0;box-sizing:border-box}
-  body{background:#0a0a12;color:#e2e8f0;font-family:'Inter',sans-serif;line-height:1.7}
-  .wrap{max-width:800px;margin:0 auto;padding:48px 24px 80px}
-  .badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;font-weight:700;padding:3px 10px;border-radius:3px}
-  .badge-red{background:rgba(233,69,96,.12);color:#e94560}
-  .badge-dim{color:#475569;letter-spacing:.1em;margin-left:8px}
-  h1{font-family:'Instrument Serif',Georgia,serif;font-size:40px;font-weight:400;color:#f8fafc;margin:10px 0 0;line-height:1.15}
-  h1 span{color:#e94560}
-  .subtitle{font-size:14px;color:#64748b;margin-top:10px}
-  .date-line{font-family:'JetBrains Mono',monospace;font-size:12px;color:#475569;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06)}
-  .numbers{display:flex;gap:1px;margin:36px 0;background:rgba(255,255,255,.04);border-radius:10px;overflow:hidden;flex-wrap:wrap}
-  .num-card{flex:1;min-width:120px;padding:16px 12px;background:#0a0a12;text-align:center}
-  .num-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:#64748b;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
-  .num-val{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600}
-  .num-change{font-size:11px;margin-top:4px}
-  .up{color:#ef4444}.down{color:#22c55e}.neutral{color:#94a3b8}
-  .sector{margin:48px 0 20px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.06)}
-  .sector-icon{font-size:18px;margin-right:8px}
-  .sector h2{font-family:'Instrument Serif',Georgia,serif;font-size:26px;font-weight:400;color:#f8fafc;display:flex;align-items:center}
-  .sector-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:#475569;margin-top:4px}
-  .story{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:8px;margin-bottom:16px;overflow:hidden}
-  .story-header{padding:20px 24px;cursor:pointer;display:flex;gap:14px;align-items:flex-start}
-  .story-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:#475569;min-width:22px;padding-top:4px}
-  .story-body{flex:1}
-  .imp-badge{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;padding:2px 8px;border-radius:3px;display:inline-block;margin-right:8px;margin-bottom:8px}
-  .imp-critical{color:#ef4444;background:rgba(239,68,68,.1)}
-  .imp-high{color:#f59e0b;background:rgba(245,158,11,.1)}
-  .imp-medium{color:#3b82f6;background:rgba(59,130,246,.1)}
-  .tag{font-family:'JetBrains Mono',monospace;font-size:10px;padding:1px 7px;border-radius:3px;display:inline-block;margin-right:6px;margin-bottom:8px}
-  .tag-red{color:#e94560;border:1px solid rgba(233,69,96,.3)}
-  .tag-orange{color:#fb923c;border:1px solid rgba(251,146,60,.3)}
-  .tag-blue{color:#50c4ed;border:1px solid rgba(80,196,237,.3)}
-  .tag-purple{color:#a78bfa;border:1px solid rgba(167,139,250,.3)}
-  .tag-green{color:#4ecdc4;border:1px solid rgba(78,205,196,.3)}
-  .tag-yellow{color:#facc15;border:1px solid rgba(250,204,21,.3)}
-  .tag-gray{color:#94a3b8;border:1px solid rgba(148,163,184,.3)}
-  h3{font-family:'Instrument Serif',Georgia,serif;font-size:20px;font-weight:400;color:#f1f5f9;line-height:1.35}
-  .summary{font-size:14px;color:#94a3b8;margin-top:8px}
-  .story-detail{padding:0 24px 24px 60px;border-top:1px solid rgba(255,255,255,.04);display:none}
-  .story.open .story-detail{display:block}
-  .story.open{border-color:rgba(255,255,255,.1)}
-  .detail-section{padding-top:18px}
-  .detail-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
-  .label-red{color:#e94560}.label-blue{color:#50c4ed}
-  .detail-text{font-size:14px;color:#cbd5e1;line-height:1.7}
-  .context-block{margin-top:14px}
-  .context-title{font-size:13px;color:#e2e8f0;font-weight:600;margin-bottom:4px}
-  .context-text{font-size:14px;color:#94a3b8;line-height:1.7}
-  .takeaway{margin-top:14px;padding:10px 14px;background:rgba(80,196,237,.06);border-left:2px solid #50c4ed;border-radius:0 6px 6px 0}
-  .takeaway p{font-size:13px;color:#50c4ed;font-weight:500}
-  .toggle{color:#475569;font-size:16px;transition:transform .3s;flex-shrink:0;user-select:none}
-  .story.open .toggle{transform:rotate(180deg)}
-  .bl-critical{border-left:3px solid #ef4444}
-  .bl-high{border-left:3px solid #f59e0b}
-  .bl-medium{border-left:3px solid #3b82f6}
-  .footer{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.06);font-family:'JetBrains Mono',monospace;font-size:11px;color:#334155;text-align:center}
-  @media(max-width:600px){h1{font-size:30px}.num-val{font-size:16px}.story-header{padding:16px}.story-detail{padding:0 16px 16px 16px}}
+  html{scroll-behavior:smooth}
+  body{background:#f2f0eb;color:#111;font-family:'Libre Baskerville',serif;line-height:1.6}
+  .wrap{max-width:780px;margin:0 auto;padding:60px 24px 100px}
+
+  /* Header */
+  header{margin-bottom:48px}
+  .logo-row{display:flex;align-items:center;gap:16px;margin-bottom:8px}
+  .logo-mark{width:56px;height:56px;flex-shrink:0}
+  .flag{font-family:'Azeret Mono',monospace;font-size:44px;font-weight:700;letter-spacing:-.02em;color:#111;line-height:1;text-transform:uppercase}
+  .header-line{height:4px;background:#111;margin:12px 0}
+  .flag-sub{display:flex;justify-content:space-between;font-family:'Azeret Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.15em;color:#666}
+  .edition{margin-top:20px;font-style:italic;font-size:18px;color:#444}
+
+  /* Nav */
+  .nav{display:flex;gap:0;margin:28px 0 32px;overflow:hidden}
+  .nav a{flex:1;padding:14px 8px;text-align:center;font-family:'Azeret Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:2px solid;transition:opacity .2s}
+  .nav a:hover{opacity:.75}
+  .nav-energy{color:#b91c1c;border-color:#b91c1c;background:rgba(185,28,28,.06)}
+  .nav-politics{color:#7c3aed;border-color:#7c3aed;background:rgba(124,58,237,.06)}
+  .nav-tech{color:#0369a1;border-color:#0369a1;background:rgba(3,105,161,.06)}
+  .nav-business{color:#15803d;border-color:#15803d;background:rgba(21,128,61,.06)}
+
+  /* Numbers */
+  .nums{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin:0 0 48px;border-top:2px solid #111;border-bottom:2px solid #111}
+  .n{padding:14px 8px;text-align:center;border-right:1px solid #ccc}
+  .n:last-child{border:none}
+  .n-label{font-family:'Azeret Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#888}
+  .n-val{font-family:'Azeret Mono',monospace;font-size:21px;font-weight:700;margin-top:4px}
+  .n-chg{font-family:'Azeret Mono',monospace;font-size:12px;margin-top:2px}
+  .nr{color:#b91c1c}.ng{color:#15803d}.nx{color:#666}
+
+  /* Sector */
+  .sec{margin:52px 0 20px;font-family:'Azeret Mono',monospace;font-size:16px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding-bottom:8px;display:flex;justify-content:space-between;scroll-margin-top:24px}
+  .sec span{font-weight:400;color:#999;font-size:13px;align-self:flex-end}
+  .sec-energy{color:#b91c1c;border-bottom:3px solid #b91c1c}
+  .sec-politics{color:#7c3aed;border-bottom:3px solid #7c3aed}
+  .sec-tech{color:#0369a1;border-bottom:3px solid #0369a1}
+  .sec-business{color:#15803d;border-bottom:3px solid #15803d}
+
+  /* Stories */
+  .story{border-bottom:1px solid #ddd;padding:0}
+  .story:last-of-type{border-bottom:none}
+  .story-hd{padding:20px 0;cursor:pointer;display:flex;gap:12px;align-items:baseline}
+  .sn{font-family:'Azeret Mono',monospace;font-size:28px;font-weight:700;color:#ddd;min-width:42px;line-height:1}
+  .sb{flex:1}
+  .badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;align-items:center}
+  .imp{font-family:'Azeret Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+  .imp-c{color:#b91c1c}.imp-h{color:#b45309}.imp-m{color:#1d4ed8}
+  .tag{font-family:'Azeret Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:#999}
+  .tag::before{content:'/ '}
+  .story h3{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:400;color:#111;line-height:1.4}
+  .sum{font-size:15px;color:#555;margin-top:6px;font-style:italic}
+  .tog{font-family:'Azeret Mono',monospace;font-size:11px;color:#ccc;flex-shrink:0;user-select:none}
+  .story.open .tog::after{content:'▲'}
+  .tog::after{content:'▼'}
+
+  .story-dt{padding:0 0 24px 54px;display:none}
+  .story.open .story-dt{display:block}
+  .ds{padding-top:16px}
+  .dl{font-family:'Azeret Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+  .dl-r{color:#b91c1c}.dl-b{color:#1d4ed8}
+  .dt{font-size:15.5px;color:#333;line-height:1.75}
+  .cb{margin-top:14px}
+  .ct{font-size:15px;font-weight:700;color:#111;margin-bottom:4px}
+  .cx{font-size:15.5px;color:#444;line-height:1.75}
+  .tk{margin-top:16px;padding:12px 16px;border-left:3px solid #111;background:rgba(0,0,0,.02)}
+  .tk p{font-family:'Azeret Mono',monospace;font-size:12px;color:#111;font-weight:500;line-height:1.5}
+
+  .footer{margin-top:60px;padding-top:16px;border-top:3px solid #111;font-family:'Azeret Mono',monospace;font-size:9px;color:#aaa;text-align:center;text-transform:uppercase;letter-spacing:.15em}
+  @media(max-width:600px){.flag{font-size:28px}.logo-mark{width:40px;height:40px}.nums{grid-template-columns:repeat(3,1fr)}.sn{font-size:22px;min-width:32px}.nav{flex-wrap:wrap}.nav a{min-width:45%}}
 </style>
 </head>
 <body>
 <div class="wrap">
-
-  <!-- HEADER -->
-  <div>
-    <span class="badge badge-red">DAILY INTELLIGENCE</span>
-    <span class="badge badge-dim">MULTI-SECTOR</span>
+<header>
+  <div class="logo-row">
+    <svg class="logo-mark" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="28" cy="28" r="26" fill="none" stroke="#111" stroke-width="2.5"/>
+      <ellipse cx="28" cy="28" rx="10" ry="26" fill="none" stroke="#111" stroke-width="1.5"/>
+      <line x1="2" y1="28" x2="54" y2="28" stroke="#111" stroke-width="1.5"/>
+      <line x1="6" y1="14" x2="50" y2="14" stroke="#111" stroke-width="1"/>
+      <line x1="6" y1="42" x2="50" y2="42" stroke="#111" stroke-width="1"/>
+      <circle cx="28" cy="28" r="3" fill="#b91c1c"/>
+      <circle cx="18" cy="14" r="2" fill="#111"/>
+      <circle cx="38" cy="14" r="2" fill="#111"/>
+      <circle cx="14" cy="28" r="2" fill="#111"/>
+      <circle cx="42" cy="28" r="2" fill="#111"/>
+      <circle cx="18" cy="42" r="2" fill="#111"/>
+      <circle cx="38" cy="42" r="2" fill="#111"/>
+      <line x1="18" y1="14" x2="28" y2="28" stroke="#111" stroke-width=".8" opacity=".4"/>
+      <line x1="38" y1="14" x2="28" y2="28" stroke="#111" stroke-width=".8" opacity=".4"/>
+      <line x1="14" y1="28" x2="28" y2="28" stroke="#111" stroke-width=".8" opacity=".4"/>
+      <line x1="42" y1="28" x2="28" y2="28" stroke="#111" stroke-width=".8" opacity=".4"/>
+      <line x1="18" y1="42" x2="28" y2="28" stroke="#111" stroke-width=".8" opacity=".4"/>
+      <line x1="38" y1="42" x2="28" y2="28" stroke="#111" stroke-width=".8" opacity=".4"/>
+    </svg>
+    <div class="flag">The World<br>AI News</div>
   </div>
-  <h1>Daily Intelligence <span>Briefing</span></h1>
-  <p class="subtitle">Curated analysis across energy, geopolitics, technology, and markets</p>
-  <div class="date-line">Tuesday, March 31, 2026 &nbsp;·&nbsp; 12 stories across 4 sectors &nbsp;·&nbsp; ranked by impact</div>
+  <div class="header-line"></div>
+  <div class="flag-sub"><span>Daily Intelligence Briefing</span><span>March 31, 2026</span></div>
+  <p class="edition">Twelve stories from the last 24 hours across four sectors. Curated by artificial intelligence. Context that matters.</p>
+</header>
 
-  <!-- KEY NUMBERS -->
-  <div class="numbers">
-    <div class="num-card">
-      <div class="num-label">Brent Crude</div>
-      <div class="num-val down">$108.20</div>
-      <div class="num-change down">&#8595; off $126 peak</div>
-    </div>
-    <div class="num-card">
-      <div class="num-label">S&amp;P 500</div>
-      <div class="num-val up">5,282</div>
-      <div class="num-change up">&#8593; +2.9% today</div>
-    </div>
-    <div class="num-card">
-      <div class="num-label">Henry Hub</div>
-      <div class="num-val up">$3.80</div>
-      <div class="num-change up">&#8593; war premium</div>
-    </div>
-    <div class="num-card">
-      <div class="num-label">Dow Jones</div>
-      <div class="num-val up">43,850</div>
-      <div class="num-change up">&#8593; +1,109 pts</div>
-    </div>
-    <div class="num-card">
-      <div class="num-label">Bitcoin</div>
-      <div class="num-val neutral">$66,410</div>
-      <div class="num-change neutral">&#8594; range-bound</div>
-    </div>
-    <div class="num-card">
-      <div class="num-label">Gold</div>
-      <div class="num-val down">$4,505</div>
-      <div class="num-change down">&#8595; risk-on shift</div>
-    </div>
-  </div>
+<nav class="nav">
+  <a href="#energy" class="nav-energy">&#9889; Energy &amp; Gas</a>
+  <a href="#politics" class="nav-politics">&#127758; Politics</a>
+  <a href="#tech" class="nav-tech">&#129302; Tech &amp; AI</a>
+  <a href="#business" class="nav-business">&#128202; Markets</a>
+</nav>
 
-  <!-- SECTOR 1: ENERGY & GAS -->
-  <div class="sector">
-    <h2><span class="sector-icon">&#9889;</span>Energy &amp; Gas</h2>
-    <div class="sector-count">3 STORIES &nbsp;&#183;&nbsp; 1 CRITICAL</div>
-  </div>
+<!-- Key Numbers -->
+<div class="nums">
+  <div class="n"><div class="n-label">Brent</div><div class="n-val ng">$108</div><div class="n-chg ng">&#8595;$126 pk</div></div>
+  <div class="n"><div class="n-label">S&amp;P</div><div class="n-val ng">5,282</div><div class="n-chg ng">&#9650; +2.9%</div></div>
+  <div class="n"><div class="n-label">HH Gas</div><div class="n-val nx">$3.80</div><div class="n-chg nx">mmbtu</div></div>
+  <div class="n"><div class="n-label">Dow</div><div class="n-val ng">43,850</div><div class="n-chg ng">&#9650; +1,109</div></div>
+  <div class="n"><div class="n-label">BTC</div><div class="n-val nx">$66k</div><div class="n-chg nx">range</div></div>
+  <div class="n"><div class="n-label">Gold</div><div class="n-val nr">$4,505</div><div class="n-chg nr">&#8595; risk-on</div></div>
+</div>
 
-  <!-- STORY 1: Hormuz Crisis (CRITICAL, OPEN) -->
-  <div class="story open bl-critical" onclick="this.classList.toggle('open')">
-    <div class="story-header">
-      <div class="story-num">01</div>
-      <div class="story-body">
-        <span class="imp-badge imp-critical">CRITICAL</span>
-        <span class="tag tag-red">#HORMUZ</span>
-        <span class="tag tag-orange">#OIL-CRISIS</span>
-        <span class="tag tag-red">#IRAN-WAR</span>
-        <h3>Strait of Hormuz Remains Closed as Iran Strikes Dubai Oil Tanker; World's Largest Energy Supply Disruption Deepens</h3>
-        <p class="summary">Iran's IRGC struck a Kuwaiti Very Large Crude Carrier anchored at the Port of Dubai on March 31, setting off a fire — the first direct Iranian strike on a vessel in UAE waters. The Strait of Hormuz has been effectively closed to vessels serving US, Israeli, and allied ports since March 27, constituting the largest disruption to global energy supply since the 1970s oil crisis. Brent crude surged from under $80/bbl to a peak of $126 before retreating on peace-talk signals.</p>
-      </div>
-      <div class="toggle">&#9662;</div>
-    </div>
-    <div class="story-detail">
-      <div class="detail-section">
-        <div class="detail-label label-red">WHY IT MATTERS</div>
-        <p class="detail-text">The Strait of Hormuz carries roughly 20–21% of global oil trade and around 17–18% of global LNG supply. Its closure has severed supply chains connecting Gulf producers to Asia, Europe, and North America, forcing tankers onto costly multi-week reroutes around the Cape of Good Hope. The Dubai port strike is a calculated escalation — it targets neutral UAE territory and one of the world's largest commercial and logistics hubs, signaling Iran's willingness to expand the conflict beyond its borders. Each additional week of closure adds roughly $10–15 per barrel in risk premium to global oil prices and accelerates inflationary pressure on every oil-importing economy. The damage to insurance markets and shipping routing models will take months to repair even after a ceasefire.</p>
-        <div class="takeaway"><p>Bottom line: The Hormuz crisis is no longer a regional energy story — it is the most consequential supply shock to the global economy since the COVID-19 pandemic, and its resolution or escalation will define the macroeconomic backdrop for Q2 2026.</p></div>
-      </div>
-      <div class="detail-section">
-        <div class="detail-label label-blue">BACKGROUND CONTEXT</div>
-        <div class="context-block">
-          <div class="context-title">Historical Background</div>
-          <p class="context-text">The Strait of Hormuz has been threatened but never fully closed in modern history. The closest precedent was the Tanker War of 1984–1988, when both Iran and Iraq attacked Gulf shipping without halting oil flows entirely. The current closure is historically unprecedented. The conflict began February 28, 2026, with joint US-Israeli airstrikes that killed Supreme Leader Ali Khamenei at age 86 — the first assassination of an Iranian supreme leader — along with the defense minister and senior IRGC commanders.</p>
-        </div>
-        <div class="context-block">
-          <div class="context-title">Key Players</div>
-          <p class="context-text">Iran's IRGC Navy controls the mining and patrol capabilities enforcing the strait closure. The US Fifth Fleet, based in Bahrain, is the primary counterforce. Saudi Arabia and the UAE — the world's largest Gulf exporters — are most economically exposed. The IEA has activated emergency reserve releases to partially offset the supply shortfall, but these are insufficient to compensate for the scale of disruption.</p>
-        </div>
-        <div class="context-block">
-          <div class="context-title">What to Watch</div>
-          <p class="context-text">President Trump's April 6 deadline is the critical near-term inflection point. If Iran does not commit to reopening the strait, Trump has threatened extensive strikes on Iranian energy infrastructure, which would likely push Brent back above $120 and could trigger an unprecedented response targeting Gulf infrastructure more broadly. Any fresh maritime strikes — particularly on Saudi or Emirati infrastructure — risk pulling the GCC into direct conflict.</p>
-        </div>
-        <div class="takeaway"><p>Bottom Line: The world is six days from either a fragile diplomatic off-ramp or the most dangerous escalation of the 2026 Iran war — global energy markets will price every piece of news from Hormuz in real time, with no margin for surprises.</p></div>
-      </div>
+<!-- ===== ENERGY ===== -->
+<div class="sec sec-energy" id="energy">Energy &amp; Gas <span>3 stories &middot; last 24h</span></div>
+
+<div class="story open" onclick="this.classList.toggle('open')">
+  <div class="story-hd"><span class="sn">01</span><div class="sb"><div class="badges"><span class="imp imp-c">Critical</span><span class="tag">Hormuz</span><span class="tag">Oil Crisis</span><span class="tag">Iran War</span></div><h3>Strait of Hormuz Remains Closed as Iran Strikes Dubai Oil Tanker; World's Largest Energy Supply Disruption Deepens</h3><p class="sum">Iran's IRGC struck a Kuwaiti VLCC anchored at the Port of Dubai on March 31 — the first direct Iranian strike in UAE waters — while the strait's closure constitutes the largest disruption to global energy supply since the 1970s oil crisis.</p></div><span class="tog"></span></div>
+  <div class="story-dt">
+    <div class="ds"><div class="dl dl-r">Why It Matters</div><p class="dt">The Strait of Hormuz carries roughly 20–21% of global oil trade and around 17–18% of global LNG supply. Its closure has severed supply chains connecting Gulf producers to Asia, Europe, and North America, forcing tankers onto costly multi-week reroutes around the Cape of Good Hope. The Dubai port strike is a calculated escalation — targeting neutral UAE territory and one of the world's largest commercial hubs, signaling Iran's willingness to expand the conflict beyond its borders. Each additional week of closure adds roughly $10–15 per barrel in risk premium and accelerates inflationary pressure on every oil-importing economy. The damage to insurance markets and shipping routing will take months to repair even after a ceasefire.</p></div>
+    <div class="ds"><div class="dl dl-b">The Full Picture</div>
+      <div class="cb"><div class="ct">Historical precedent</div><p class="cx">The Strait of Hormuz has been threatened but never fully closed in modern history. The closest precedent was the Tanker War of 1984–1988, when Iran and Iraq attacked Gulf shipping without halting oil flows entirely. The current closure is historically unprecedented. The conflict began February 28, 2026, with joint US-Israeli airstrikes that killed Supreme Leader Ali Khamenei at age 86 — the first assassination of an Iranian supreme leader — along with the defense minister and senior IRGC commanders. Mojtaba Khamenei was appointed successor on March 8.</p></div>
+      <div class="cb"><div class="ct">Key players and forces</div><p class="cx">Iran's IRGC Navy controls the mining and patrol capabilities enforcing the closure. The US Fifth Fleet in Bahrain is the primary counterforce. Saudi Arabia and the UAE — the world's largest Gulf exporters — are most economically exposed. The IEA has activated emergency reserve releases, but these cannot compensate for the scale of disruption. IRGC commander Alireza Tangsiri was killed in an Israeli airstrike on March 26, which Iran cited as justification for formally closing the strait to allied vessels the following day.</p></div>
+      <div class="cb"><div class="ct">What to watch next</div><p class="cx">President Trump's April 6 deadline is the critical near-term inflection point. If Iran does not commit to reopening the strait, Trump has threatened extensive strikes on Iranian energy infrastructure, which would likely push Brent back above $120 and trigger an unprecedented response targeting Gulf infrastructure more broadly. Any fresh maritime strikes on Saudi or Emirati assets risk pulling the GCC into direct conflict.</p></div>
+      <div class="tk"><p>&#8627; Bottom line: The world is six days from either a fragile diplomatic off-ramp or the most dangerous escalation of the 2026 Iran war. This is the most consequential supply shock to the global economy since the COVID-19 pandemic.</p></div>
     </div>
   </div>
+</div>
 
-  <!-- STORY 2: Brent Crude Drop (HIGH) -->
-  <div class="story bl-high" onclick="this.classList.toggle('open')">
-    <div class="story-header">
-      <div class="story-num">02</div>
-      <div class="story-body">
-        <span class="imp-badge imp-high">HIGH</span>
-        <span class="tag tag-orange">#OIL-MARKETS</span>
-        <span class="tag tag-yellow">#BRENT</span>
-        <span class="tag tag-gray">#DIPLOMACY</span>
-        <h3>Brent Crude Retreats to $108 From $126 Peak as Trump War-End Signals Trigger Relief Selling</h3>
-        <p class="summary">Oil prices dropped sharply on March 31 as President Trump told aides he is willing to end the US military campaign against Iran even if the Strait of Hormuz remains largely closed — a significant softening of prior conditions. Brent fell more than $18 from its recent peak of $126/bbl, and US crude dropped to around $102, though both remain up roughly 40–50% since the conflict began February 28.</p>
-      </div>
-      <div class="toggle">&#9662;</div>
-    </div>
-    <div class="story-detail">
-      <div class="detail-section">
-        <div class="detail-label label-red">WHY IT MATTERS</div>
-        <p class="detail-text">The $18+ single-session drop in Brent illustrates how acutely war risk has been embedded in energy prices and how sensitive markets are to any diplomatic signal. If the April 6 deadline passes without major escalation and back-channel talks show progress, a further normalization toward the $90–95 range is plausible. However, the strait physically remains closed, and price relief is entirely conditional on Iranian compliance — something Tehran has not committed to. The core risk is that markets are pricing in peace before it exists: any reversal of diplomatic progress could send oil soaring again, reigniting inflation that central banks had nearly extinguished over the prior 18 months.</p>
-        <div class="takeaway"><p>Bottom line: Oil's March 31 pullback is a peace dividend priced in advance — the underlying supply disruption is unchanged, and energy investors who lock in relief may be exposed to a rapid reversal if April 6 negotiations collapse.</p></div>
-      </div>
+<div class="story" onclick="this.classList.toggle('open')">
+  <div class="story-hd"><span class="sn">02</span><div class="sb"><div class="badges"><span class="imp imp-h">High</span><span class="tag">Oil Markets</span><span class="tag">Brent</span></div><h3>Brent Crude Retreats to $108 From $126 Peak as Trump War-End Signals Trigger Relief Selling</h3><p class="sum">Oil prices fell sharply as Trump told aides he's willing to end the campaign against Iran even if the Strait of Hormuz remains largely closed — a significant softening of prior conditions.</p></div><span class="tog"></span></div>
+  <div class="story-dt">
+    <div class="ds"><div class="dl dl-r">Why It Matters</div><p class="dt">The $18+ single-session correction in Brent illustrates how acutely war risk has been embedded in energy prices and how sensitive markets are to any diplomatic signal. If the April 6 deadline passes without major escalation and back-channel talks show progress, further normalization toward $90–95 is plausible. However, the strait physically remains closed, and price relief is entirely conditional on Iranian compliance — something Tehran has not committed to. The core risk is that markets are pricing in peace before it exists: any reversal of diplomatic progress could send oil soaring again, reigniting inflation central banks had nearly extinguished over the prior 18 months.</p></div>
+    <div class="tk"><p>&#8627; Oil's pullback is a peace dividend priced in advance. The underlying supply disruption is unchanged, and investors who lock in relief may face rapid reversal if the April 6 deadline collapses.</p></div>
+  </div>
+</div>
+
+<div class="story" onclick="this.classList.toggle('open')">
+  <div class="story-hd"><span class="sn">03</span><div class="sb"><div class="badges"><span class="imp imp-m">Medium</span><span class="tag">OPEC+</span><span class="tag">Supply</span></div><h3>OPEC+ Quietly Shelves Q2 Output Increase Plans as Hormuz Crisis Upends Supply Models</h3><p class="sum">Members suspended discussions about gradual production increases for Q2, focusing instead on maintaining 2.2 million bpd in voluntary cuts as the Hormuz closure eliminates the oversupply that had worried the group.</p></div><span class="tog"></span></div>
+  <div class="story-dt">
+    <div class="ds"><div class="dl dl-r">Why It Matters</div><p class="dt">The IEA had projected Q1 2026 could see one of the largest global oil oversupplies in recent years — a forecast now completely obsolete given the Hormuz closure. OPEC+ suspending its output ramp-up removes one potential price moderating factor just as physical supply is severely constrained. But the group faces a strategic paradox: extremely elevated prices incentivize US shale and Guyana production, eroding OPEC+ market share long-term, and accelerate the green energy transition. Saudi Arabia and Russia favor extending the current production ceiling through Q3 at minimum.</p></div>
+    <div class="tk"><p>&#8627; OPEC+ is navigating a price environment it did not engineer and cannot control. The Hormuz crisis has handed the cartel windfall revenues but also structural vulnerabilities if prices stay elevated long enough to accelerate the energy transition.</p></div>
+  </div>
+</div>
+
+<!-- ===== POLITICS ===== -->
+<div class="sec sec-politics" id="politics">Politics &amp; Geopolitics <span>3 stories &middot; last 24h</span></div>
+
+<div class="story open" onclick="this.classList.toggle('open')">
+  <div class="story-hd"><span class="sn">04</span><div class="sb"><div class="badges"><span class="imp imp-c">Critical</span><span class="tag">Iran Diplomacy</span><span class="tag">April 6</span></div><h3>Trump's April 6 Ultimatum: Iran Rejects U.S. 15-Point Peace Plan, Counter-Demands Sovereignty Over Hormuz</h3><p class="sum">The deadline looms with categorical incompatibility between the US demand for denuclearization and Iran's demand for sovereignty recognition over a global waterway — making a resolution far less likely than markets are pricing.</p></div><span class="tog"></span></div>
+  <div class="story-dt">
+    <div class="ds"><div class="dl dl-r">Why It Matters</div><p class="dt">President Trump extended the deadline for Iran to reopen the Strait of Hormuz to April 6, warning of "extensive attacks on Iranian energy sites" if missed. Iran publicly rejected the US 15-point peace proposal — requiring a ceasefire, surrender of enriched uranium, and an end to proxy support — and countered with five conditions including reparations for war damage and formal international recognition of Iranian sovereignty over the strait. Pakistan is facilitating back-channel communications, though both sides publicly deny formal negotiations. Markets have priced in a partial probability of resolution after Trump's softer signals; a failed deadline would trigger a sharp reversal across equities and oil simultaneously.</p></div>
+    <div class="ds"><div class="dl dl-b">The Full Picture</div>
+      <div class="cb"><div class="ct">How we got here</div><p class="cx">The conflict began February 28 with joint US-Israeli airstrikes that killed Supreme Leader Ali Khamenei (86) and multiple senior officials. His son Mojtaba Khamenei was appointed successor on March 8 — a dynastic succession unprecedented in the Islamic Republic's 47-year history. The IRGC formally closed Hormuz to vessels bound for US, Israeli, and allied ports on March 27, citing the killing of Iranian Naval Commander Alireza Tangsiri on March 26. US Special Envoy Steve Witkoff authored and delivered the 15-point peace framework through Pakistani intermediaries.</p></div>
+      <div class="cb"><div class="ct">The diplomatic players</div><p class="cx">Pakistan's Deputy PM Ishaq Dar is serving as the primary intermediary, with Turkey and Egypt in supporting roles. New Supreme Leader Mojtaba Khamenei is consolidating power domestically, constraining Iran's flexibility in concession-based negotiations. Israeli PM Netanyahu has taken a harder line, opposing any deal that does not permanently eliminate Iran's nuclear program — a position that constrains US flexibility on the 15-point plan. Trump has publicly contradicted his own intelligence on whether talks are even happening.</p></div>
+      <div class="cb"><div class="ct">What to watch</div><p class="cx">The April 6 deadline itself; any statement from Pakistan confirming direct US-Iran communication; whether Iran takes further military action in the Gulf before the deadline; and Trump's language if granting another extension — a third extension without progress would signal the ultimatum has lost credibility. Also watch for signals from Israel about its posture toward a deal that leaves Iran's nuclear program intact.</p></div>
+      <div class="tk"><p>&#8627; Bottom line: The gap between US and Iranian positions is not a negotiating disagreement — it's a categorical incompatibility. This deadline will more likely be extended than resolved, prolonging the conflict and its severe economic consequences.</p></div>
     </div>
   </div>
+</div>
 
-  <!-- STORY 3: OPEC+ (MEDIUM) -->
-  <div class="story bl-medium" onclick="this.classList.toggle('open')">
-    <div class="story-header">
-      <div class="story-num">03</div>
-      <div class="story-body">
-        <span class="imp-badge imp-medium">MEDIUM</span>
-        <span class="tag tag-yellow">#OPEC+</span>
-        <span class="tag tag-orange">#SUPPLY</span>
-        <span class="tag tag-gray">#ENERGY-POLICY</span>
-        <h3>OPEC+ Quietly Shelves Q2 Output Increase Plans as Hormuz Crisis Upends Global Supply Models</h3>
-        <p class="summary">OPEC+ members have suspended discussions about gradual production increases originally scheduled for Q2 2026, with internal deliberations now focused on maintaining the existing 2.2 million bpd voluntary cuts. Saudi Arabia and Russia favor extending the current production ceiling through at least Q3, as Iran's Hormuz closure has eliminated the global oversupply that had previously been the group's primary concern.</p>
-      </div>
-      <div class="toggle">&#9662;</div>
-    </div>
-    <div class="story-detail">
-      <div class="detail-section">
-        <div class="detail-label label-red">WHY IT MATTERS</div>
-        <p class="detail-text">The IEA had projected that Q1 2026 could see one of the largest global oil oversupplies in recent years — a forecast now completely obsolete given the Hormuz closure. OPEC+ suspending its output ramp-up removes one potential price moderating factor just as physical supply is already severely constrained. However, the group faces a strategic paradox: extremely elevated prices incentivize US shale and Guyana production, potentially eroding OPEC+ market share long-term, and simultaneously accelerate the green energy transition that threatens the group's structural relevance. The next formal OPEC meeting will set Q2 policy in a radically different market environment than the group anticipated in January.</p>
-        <div class="takeaway"><p>Bottom line: OPEC+ is navigating a price environment it did not engineer and cannot fully control — the Hormuz crisis has handed the cartel windfall revenues but also structural vulnerabilities if prices stay elevated long enough to accelerate energy transition investment.</p></div>
-      </div>
+<div class="story" onclick="this.classList.toggle('open')">
+  <div class="story-hd"><span class="sn">05</span><div class="sb"><div class="badges"><span class="imp imp-h">High</span><span class="tag">Gulf Security</span><span class="tag">Maritime</span><span class="tag">UAE</span></div><h3>Iran Strikes Kuwaiti Oil Tanker in Dubai Port Waters; Gulf Neutrals Forced Toward Confrontation</h3><p class="sum">The IRGC struck the VLCC Al Salmi while anchored at the Port of Dubai — the first direct Iranian attack in UAE territorial waters — threatening to drag neutral Gulf states into the war.</p></div><span class="tog"></span></div>
+  <div class="story-dt">
+    <div class="ds"><div class="dl dl-r">Why It Matters</div><p class="dt">The UAE has carefully maintained neutrality since the conflict began, serving as a critical financial and logistics hub for regional trade. Striking within Dubai's port waters directly challenges that neutrality and signals Iran is willing to escalate against non-belligerent states to maximize economic pressure on the US-led coalition. If the UAE is forced to formally align against Iran, it would represent a major shift in the region's diplomatic map and could bring Emirati and Kuwaiti military infrastructure into the conflict. The attack also threatens the insurance market's ability to cover Gulf commercial shipping at viable premiums — potentially shutting down non-military maritime trade even beyond the Hormuz closure zone. Dubai's position as a global financial hub adds a capital markets dimension to what began as a physical energy supply shock.</p></div>
+    <div class="tk"><p>&#8627; Iran's willingness to strike within Dubai's harbor signals it is prepared to escalate against the broader Gulf economic architecture — hardening international opposition while inflicting severe near-term damage on Gulf trade and financial flows.</p></div>
+  </div>
+</div>
+
+<div class="story" onclick="this.classList.toggle('open')">
+  <div class="story-hd"><span class="sn">06</span><div class="sb"><div class="badges"><span class="imp imp-h">High</span><span class="tag">IMF</span><span class="tag">Stagflation</span><span class="tag">India</span></div><h3>IMF Warns Iran War Could Shave Over 1 Percentage Point from Global GDP; Developing Asia Most Exposed</h3><p class="sum">The Fund formally warned the war is driving higher prices and slower growth worldwide. India faces the sharpest impact, with GDP growth eroding ~1ppt and inflation rising ~1.5ppt above baseline.</p></div><span class="tog"></span></div>
+  <div class="story-dt">
+    <div class="ds"><div class="dl dl-r">Why It Matters</div><p class="dt">The IMF warning crystallizes what markets have been pricing since late February: this conflict is a global macroeconomic event, not a regional one. Net oil-importing developing economies — India, Pakistan, Indonesia, much of sub-Saharan Africa — face stagflationary pressure that is particularly difficult to manage because it originates externally and cannot be addressed with domestic monetary or fiscal policy alone. For advanced economies, the re-acceleration of inflation threatens to force central banks that had declared victory to delay or reverse rate cuts. US gas prices reached $4 per gallon for the first time since 2022, creating bipartisan congressional pressure to resolve the conflict — which may be the most impactful near-term effect of the IMF warning in shaping the administration's diplomatic calculus ahead of April 6.</p></div>
+    <div class="tk"><p>&#8627; Every additional month of Hormuz closure costs the global economy measurably in both growth and inflation, with the burden falling disproportionately on the world's most economically vulnerable populations.</p></div>
+  </div>
+</div>
+
+<!-- ===== TECH ===== -->
+<div class="sec sec-tech" id="tech">Tech &amp; AI <span>3 stories &middot; last 24h</span></div>
+
+<div class="story" onclick="this.classList.toggle('open')">
+  <div class="story-hd"><span class="sn">07</span><div class="sb"><div class="badges"><span class="imp imp-h">High</span><span class="tag">Oracle</span><span class="tag">Layoffs</span><span class="tag">AI Infra</span></div><h3>Oracle Fires Up to 30,000 Employees at Dawn to Finance $156 Billion AI Infrastructure Buildout</h3><p class="sum">Potentially the largest layoff in the company's 50-year history — termination emails sent at 6am with no prior warning — designed to free $8–10B in cash flow for an aggressive AI data center commitment.</p></div><span class="tog"></span></div>
+  <div class="story-dt">
+    <div class="ds"><div class="dl dl-r">Why It Matters</div><p class="dt">Oracle began executing what TD Cowen estimates could be its largest-ever layoff on March 31, sending cold termination emails to an estimated 20,000–30,000 employees (roughly 18% of its global workforce) across the US, India, Canada, and Mexico. The cuts are designed to generate $8–10 billion in incremental free cash flow to service $58 billion in new debt Oracle has raised in just two months to fund a $156 billion AI data center commitment — against roughly $50 billion in annual revenue. Reports from Reddit and Blind confirmed entire teams at units including Revenue and Health Sciences and SaaS and Virtual Operations Services saw reductions of at least 30%.</p></div>
+    <div class="ds"><div class="dl dl-b">The bigger picture</div>
+      <div class="cx">Oracle's restructuring illustrates how the AI infrastructure arms race is reshaping the technology labor market and corporate finance simultaneously. The method of execution — a 6am form email to entire teams with no prior manager notification — is likely to generate regulatory scrutiny in the EU, UK, and India where mass layoff notification requirements exist. More structurally, Oracle's move reinforces a pattern across Big Tech: companies are not slowing AI infrastructure investment despite war-driven macro headwinds, and the human cost of that pivot is being borne at unprecedented scale and speed. The $156 billion commitment represents a bet-the-company wager that AI cloud infrastructure will define Oracle's competitive position in the 2030s.</p></div>
+    <div class="tk"><p>&#8627; Oracle's dawn termination campaign marks a new phase in Big Tech's AI pivot — one where the human cost of infrastructure investment raises serious questions about the social contract between large technology companies and their workforces.</p></div>
     </div>
   </div>
+</div>
 
-  <!-- SECTOR 2: POLITICS & GEOPOLITICS -->
-  <div class="sector">
-    <h2><span class="sector-icon">&#127758;</span>Politics &amp; Geopolitics</h2>
-    <div class="sector-count">3 STORIES &nbsp;&#183;&nbsp; 1 CRITICAL</div>
-  </div>
-
-  <!-- STORY 4: Trump April 6 Deadline (CRITICAL, OPEN) -->
-  <div class="story open bl-critical" onclick="this.classList.toggle('open')">
-    <div class="story-header">
-      <div class="story-num">04</div>
-      <div class="story-body">
-        <span class="imp-badge imp-critical">CRITICAL</span>
-        <span class="tag tag-red">#IRAN-DIPLOMACY</span>
-        <span class="tag tag-purple">#TRUMP</span>
-        <span class="tag tag-red">#APRIL-6</span>
-        <h3>Trump's April 6 Ultimatum: Iran Rejects U.S. 15-Point Peace Plan, Counter-Demands Sovereignty Recognition Over Hormuz</h3>
-        <p class="summary">President Trump extended the deadline for Iran to reopen the Strait of Hormuz to April 6, warning of "extensive attacks on Iranian energy sites" if missed. Iran publicly rejected the US 15-point peace proposal — requiring a ceasefire, surrender of enriched uranium, and an end to proxy support — and countered with five conditions including reparations for war damage and formal international recognition of Iranian sovereignty over the Hormuz Strait. Pakistan is facilitating back-channel communications, though both sides publicly deny formal negotiations are underway.</p>
-      </div>
-      <div class="toggle">&#9662;</div>
-    </div>
-    <div class="story-detail">
-      <div class="detail-section">
-        <div class="detail-label label-red">WHY IT MATTERS</div>
-        <p class="detail-text">Iran's demand for sovereignty recognition over the Strait of Hormuz is fundamentally incompatible with international maritime law, US strategic interests, and the positions of every Gulf state — making it a categorical non-starter rather than a negotiating position. If April 6 passes without progress, Trump has committed to strikes on Iranian energy infrastructure that would likely push Brent crude back toward $126 and higher, while risking a full-scale retaliatory response that could further expand the conflict's geographic footprint. Markets have already priced in a partial probability of resolution after Trump's softer signals on March 31; a failed deadline would trigger a sharp reversal across equities and oil simultaneously — a rare and dangerous dual shock that would particularly hurt equity markets that rallied sharply today on peace speculation.</p>
-        <div class="takeaway"><p>Bottom line: Six days remain before the world's most consequential diplomatic deadline of 2026 — and the current categorical distance between US and Iranian positions makes the probability of an agreement significantly lower than markets are currently pricing.</p></div>
-      </div>
-      <div class="detail-section">
-        <div class="detail-label label-blue">BACKGROUND CONTEXT</div>
-        <div class="context-block">
-          <div class="context-title">Historical Background</div>
-          <p class="context-text">The 2026 Iran war began on February 28 with joint US-Israeli airstrikes on Iran that killed Supreme Leader Ali Khamenei (86) and multiple senior officials including the defense minister and IRGC commander. This followed months of escalating tensions. Khamenei's son Mojtaba was appointed as successor on March 8 by the Assembly of Experts — a dynastic succession unprecedented in the Islamic Republic's 47-year history. Iran's IRGC formally closed Hormuz to vessels bound for US, Israeli, and allied ports on March 27, citing the assassination of Iranian Naval Commander Alireza Tangsiri on March 26.</p>
-        </div>
-        <div class="context-block">
-          <div class="context-title">Key Players</div>
-          <p class="context-text">US Special Envoy Steve Witkoff authored and delivered the 15-point peace framework. Pakistan's Deputy PM Ishaq Dar is serving as the primary intermediary, with Turkey and Egypt also playing supporting diplomatic roles. New Supreme Leader Mojtaba Khamenei is consolidating power domestically, which may constrain Iran's flexibility in any concession-based negotiation. Israeli PM Netanyahu has taken a harder line, opposing any deal that does not permanently eliminate Iran's nuclear program — a position that constrains US flexibility on the 15-point plan.</p>
-        </div>
-        <div class="context-block">
-          <div class="context-title">What to Watch</div>
-          <p class="context-text">The April 6 deadline itself; any statement from Pakistan confirming direct US-Iran communication; whether Iran takes further military action in the Gulf before the deadline; and Trump's language if granting another extension — a third extension without progress would signal that the ultimatum has lost credibility. Also watch for any signal from Israel about its posture toward a deal that leaves Iran's nuclear program intact.</p>
-        </div>
-        <div class="takeaway"><p>Bottom Line: The gap between the US demand for denuclearization and Iran's demand for sovereignty over a global waterway is not a negotiating disagreement — it is a categorical incompatibility that suggests this deadline may be extended again rather than resolved, prolonging both the conflict and its severe economic consequences.</p></div>
-      </div>
+<div class="story" onclick="this.classList.toggle('open')">
+  <div class="story-hd"><span class="sn">08</span><div class="sb"><div class="badges"><span class="imp imp-h">High</span><span class="tag">Anthropic</span><span class="tag">OpenAI</span><span class="tag">IPO</span></div><h3>Anthropic Targets $60B+ IPO for October 2026; OpenAI's $120B Round at $850B Valuation Sets the Benchmark</h3><p class="sum">The two leading AI companies are racing to public markets. Anthropic's revenue doubled to $19B annualized in one quarter; OpenAI has passed $25B with Amazon, Nvidia, and SoftBank backing.</p></div><span class="tog"></span></div>
+  <div class="story-dt">
+    <div class="ds"><div class="dl dl-r">Why It Matters</div><p class="dt">Anthropic is in preliminary discussions with Goldman Sachs, JPMorgan, and Morgan Stanley about a potential IPO targeting a valuation above $60 billion — which would rank as the second-largest IPO in history after SpaceX. The company has engaged Wilson Sonsini as IPO counsel and is eyeing an October 2026 window. Anthropic's annualized revenue surpassed $19 billion in March 2026, more than doubling from $9 billion at end-2025. Separately, OpenAI closed a $120 billion funding round (Amazon $50B, Nvidia $30B, SoftBank $30B, plus $10B from MGX/Coatue/Thrive) at an $850 billion post-money valuation and is also racing to list near a $1 trillion valuation.</p></div>
+    <div class="ds"><div class="dl dl-b">The competitive dynamics</div>
+      <div class="cx">The Anthropic-OpenAI IPO race mirrors the mid-2010s Uber-Lyft competition and carries similar risks: whoever IPOs second may face a less favorable market if the first company's post-debut performance disappoints. The extraordinary revenue growth reflects genuine enterprise AI demand, but public investors will scrutinize burn rates, compute costs, and margin trajectories in ways private backers have not. At $380 billion, Anthropic's private valuation already exceeds most S&amp;P 500 companies. Critically, these IPOs will occur against war-driven macro uncertainty — conditions that historically reduce appetite for high-multiple technology listings.</p></div>
+    <div class="tk"><p>&#8627; The Anthropic-OpenAI IPO race will be the defining capital markets event for AI in 2026 — but the public market's willingness to sustain private-round valuations in a war-stressed environment is the critical unknown.</p></div>
     </div>
   </div>
+</div>
 
-  <!-- STORY 5: Iran Dubai Tanker Strike (HIGH) -->
-  <div class="story bl-high" onclick="this.classList.toggle('open')">
-    <div class="story-header">
-      <div class="story-num">05</div>
-      <div class="story-body">
-        <span class="imp-badge imp-high">HIGH</span>
-        <span class="tag tag-red">#GULF-SECURITY</span>
-        <span class="tag tag-orange">#MARITIME</span>
-        <span class="tag tag-purple">#UAE</span>
-        <h3>Iran Strikes Kuwaiti Oil Tanker in Dubai Port Waters; Gulf Neutral States Forced Toward Confrontation</h3>
-        <p class="summary">The IRGC struck the Kuwaiti VLCC Al Salmi while anchored at the Port of Dubai on March 31, causing a fire aboard the vessel. The attack is the first direct Iranian strike in UAE territorial waters during the five-week-old conflict, threatening to draw neutral Gulf states into the war. The Port of Dubai and Jebel Ali together form one of the world's largest commercial logistics hubs, with over 90 shipping lines connecting to 140 countries.</p>
-      </div>
-      <div class="toggle">&#9662;</div>
-    </div>
-    <div class="story-detail">
-      <div class="detail-section">
-        <div class="detail-label label-red">WHY IT MATTERS</div>
-        <p class="detail-text">The UAE has carefully maintained neutrality since the conflict began, serving as a critical financial and logistics hub for regional trade. Striking within Dubai's port waters directly challenges that neutrality and signals Iran is willing to escalate against non-belligerent states to maximize economic pressure on the US-led coalition. If the UAE is forced to formally align against Iran, it would represent a significant shift in the region's diplomatic map and could bring Emirati and Kuwaiti military infrastructure into the conflict theater. The attack also threatens the insurance and reinsurance market's ability to cover Gulf commercial shipping at viable premiums — potentially shutting down non-military maritime trade in the region even beyond the Hormuz closure zone. Dubai's position as a global financial hub through which significant capital flows could be disrupted adds a financial market dimension to what began as a physical energy supply shock.</p>
-        <div class="takeaway"><p>Bottom line: Iran's willingness to strike within Dubai's harbor signals it is prepared to escalate against the broader Gulf economic architecture — hardening international opposition to Tehran while inflicting severe near-term damage on Gulf trade and financial flows.</p></div>
-      </div>
-    </div>
+<div class="story" onclick="this.classList.toggle('open')">
+  <div class="story-hd"><span class="sn">09</span><div class="sb"><div class="badges"><span class="imp imp-m">Medium</span><span class="tag">Apple</span><span class="tag">Google Gemini</span><span class="tag">Siri</span></div><h3>Apple-Google Gemini Alliance Deepens Ahead of WWDC 2026; $1B Deal to Power Context-Aware Next-Gen Siri</h3><p class="sum">Apple is finalizing a reimagined Siri powered by Google's Gemini models through a $1B licensing deal, with a full reveal at WWDC on June 8. Shares rose 2.6% on renewed AI optimism.</p></div><span class="tog"></span></div>
+  <div class="story-dt">
+    <div class="ds"><div class="dl dl-r">Why It Matters</div><p class="dt">The Apple-Google AI alignment is strategically significant precisely because it inverts their historic relationship: for decades, Google paid Apple roughly $20 billion annually to remain the default iOS search engine; now Apple is paying Google $1 billion for AI capabilities. For Google, embedding Gemini into every iPhone sold globally strengthens its AI distribution moat at a time when its search business faces structural pressure from AI-native competitors. For Apple, the deal acknowledges that building world-class foundation models in-house is beyond its current capabilities on the timelines iOS 27 demands — a significant strategic concession from a company built on end-to-end control. The continued parallel partnership with OpenAI (ChatGPT powers some Apple Intelligence features) suggests Apple is deliberately avoiding single-vendor AI dependency.</p></div>
+    <div class="tk"><p>&#8627; Apple's embrace of Gemini confirms that even the most vertically integrated technology company in history has concluded that foundation model development is too expensive and complex to own outright. Distribution, not model ownership, is Apple's play.</p></div>
   </div>
+</div>
 
-  <!-- STORY 6: IMF Warning (HIGH) -->
-  <div class="story bl-high" onclick="this.classList.toggle('open')">
-    <div class="story-header">
-      <div class="story-num">06</div>
-      <div class="story-body">
-        <span class="imp-badge imp-high">HIGH</span>
-        <span class="tag tag-blue">#IMF</span>
-        <span class="tag tag-gray">#GLOBAL-ECONOMY</span>
-        <span class="tag tag-purple">#STAGFLATION</span>
-        <h3>IMF Warns Iran War Could Shave Over 1 Percentage Point from Global GDP; India and Developing Asia Most Exposed</h3>
-        <p class="summary">The International Monetary Fund formally warned that the US-Israel-Iran war is driving higher prices and slower growth worldwide. India faces the sharpest developing-economy impact, with real GDP growth potentially eroding by approximately 1 percentage point and retail inflation rising by 1.5 percentage points above baseline if the conflict persists. US gas prices reached $4 per gallon for the first time since 2022, and European and Asian LNG prices have surged as Hormuz-routed flows are disrupted.</p>
-      </div>
-      <div class="toggle">&#9662;</div>
-    </div>
-    <div class="story-detail">
-      <div class="detail-section">
-        <div class="detail-label label-red">WHY IT MATTERS</div>
-        <p class="detail-text">The IMF warning crystallizes what markets have been pricing since late February: this conflict is a global macroeconomic event, not a regional one. Net oil-importing developing economies — India, Pakistan, Indonesia, much of sub-Saharan Africa — face stagflationary pressure that is particularly difficult to manage because it originates externally and cannot be addressed with domestic monetary or fiscal policy alone. For advanced economies, the re-acceleration of inflation threatens to force central banks that had declared victory to delay or reverse rate cuts. The $4/gallon US gas price is politically toxic and creates bipartisan congressional pressure to resolve the conflict quickly — which may be the most impactful near-term effect of the IMF warning in shaping the Trump administration's diplomatic calculus ahead of the April 6 deadline.</p>
-        <div class="takeaway"><p>Bottom line: The IMF has quantified what was previously intuitive — every additional month of Hormuz closure costs the global economy measurably in both growth and inflation, with the burden falling disproportionately on the world's most economically vulnerable populations.</p></div>
-      </div>
-    </div>
-  </div>
+<!-- ===== BUSINESS ===== -->
+<div class="sec sec-business" id="business">Business &amp; Markets <span>3 stories &middot; last 24h</span></div>
 
-  <!-- SECTOR 3: TECH & AI -->
-  <div class="sector">
-    <h2><span class="sector-icon">&#129302;</span>Tech &amp; AI</h2>
-    <div class="sector-count">3 STORIES &nbsp;&#183;&nbsp; 0 CRITICAL</div>
+<div class="story" onclick="this.classList.toggle('open')">
+  <div class="story-hd"><span class="sn">10</span><div class="sb"><div class="badges"><span class="imp imp-h">High</span><span class="tag">Equities</span><span class="tag">War Risk</span><span class="tag">Rally</span></div><h3>Wall Street Posts Biggest Rally Since May: Dow Surges 1,109 Points as Trump Signals Iran War May Not Last "Much Longer"</h3><p class="sum">The S&amp;P gained 2.9%, Nasdaq 3.8%, led by Nvidia (+4.8%), Microsoft (+3.2%), and Apple (+2.6%) as markets bet on a near-term ceasefire before the April 6 deadline.</p></div><span class="tog"></span></div>
+  <div class="story-dt">
+    <div class="ds"><div class="dl dl-r">Why It Matters</div><p class="dt">The scale of the rally — one of the largest sessions in months — reflects how deeply war risk has been priced into equity valuations since February 28 and how acutely institutional investors are tracking every diplomatic signal. Critically, the rally happened while the strait remains physically closed and Iran has publicly rejected the US peace framework — meaning the move is driven entirely by expectations rather than facts on the ground. This creates significant asymmetric risk: if April 6 passes without progress, the reversal could be sharp and disorderly. The Nvidia and Microsoft outperformance confirms that institutional money views AI infrastructure capex as a structural trend that transcends macro headwinds — a conviction that has only grown despite the war.</p></div>
+    <div class="tk"><p>&#8627; March 31's rally is hope priced as certainty. The underlying geopolitical situation remains dangerously unresolved, and the risk-reward for chasing these gains is asymmetrically unfavorable heading into the April 6 deadline.</p></div>
   </div>
+</div>
 
-  <!-- STORY 7: Oracle Layoffs (HIGH) -->
-  <div class="story bl-high" onclick="this.classList.toggle('open')">
-    <div class="story-header">
-      <div class="story-num">07</div>
-      <div class="story-body">
-        <span class="imp-badge imp-high">HIGH</span>
-        <span class="tag tag-blue">#ORACLE</span>
-        <span class="tag tag-red">#LAYOFFS</span>
-        <span class="tag tag-purple">#AI-INFRA</span>
-        <h3>Oracle Fires Up to 30,000 Employees at Dawn to Finance $156 Billion AI Infrastructure Buildout</h3>
-        <p class="summary">Oracle began executing what TD Cowen estimates could be the largest layoff in the company's 50-year history on March 31, sending cold termination emails at 6am local time to an estimated 20,000–30,000 employees (roughly 18% of its global workforce) across the US, India, Canada, and Mexico with no prior individual warning. The cuts are designed to generate $8–10 billion in incremental free cash flow to service $58 billion in new debt Oracle has raised in just two months to fund a $156 billion AI data center commitment.</p>
-      </div>
-      <div class="toggle">&#9662;</div>
-    </div>
-    <div class="story-detail">
-      <div class="detail-section">
-        <div class="detail-label label-red">WHY IT MATTERS</div>
-        <p class="detail-text">Oracle's restructuring is a stark illustration of how the AI infrastructure arms race is reshaping the entire technology labor market and corporate finance simultaneously. The company's $156 billion capital commitment — against roughly $50 billion in annual revenue — represents a bet-the-company wager that AI cloud infrastructure will define its competitive position in the 2030s. The method of execution (a 6am form email to entire teams with no prior manager notification) is likely to generate regulatory scrutiny in the EU, UK, and India, where mass layoff notification requirements exist, and will test employment law across multiple jurisdictions. More structurally, Oracle's move reinforces a pattern across Big Tech: companies are not slowing AI infrastructure investment despite war-driven macro headwinds, and the human cost of that pivot is being borne at unprecedented scale and speed.</p>
-        <div class="takeaway"><p>Bottom line: Oracle's dawn termination campaign marks a new phase in Big Tech's AI pivot — one where the human cost of infrastructure investment is being borne at a scale and abruptness that raises serious questions about the social contract between large technology companies and their workforces.</p></div>
-      </div>
-    </div>
+<div class="story" onclick="this.classList.toggle('open')">
+  <div class="story-hd"><span class="sn">11</span><div class="sb"><div class="badges"><span class="imp imp-m">Medium</span><span class="tag">Pharma M&amp;A</span><span class="tag">Eli Lilly</span></div><h3>Eli Lilly Pays $7.8 Billion for Centessa Pharmaceuticals, Diversifying Beyond GLP-1 Blockbusters</h3><p class="sum">The acquisition adds a rare disease pipeline to complement Lilly's Mounjaro/Zepbound franchise. Shares rose 3% as investors welcomed the diversification ahead of potential patent cliffs.</p></div><span class="tog"></span></div>
+  <div class="story-dt">
+    <div class="ds"><div class="dl dl-r">Why It Matters</div><p class="dt">Lilly's $7.8 billion deal continues a broad wave of large-cap pharma acquisitions as companies race to diversify before patent expirations threaten core revenue streams. Rare disease drugs are particularly attractive M&amp;A targets: high pricing power, limited generic competition, accelerated regulatory pathways, and durable royalty-like revenue profiles. Lilly's willingness to deploy significant capital despite war-driven macro uncertainty signals confidence that GLP-1 cash flows will remain robust enough to fund aggressive expansion across economic conditions. The deal also provides a hedge against healthcare pricing scrutiny by reducing exposure to any single drug class facing congressional attention.</p></div>
+    <div class="tk"><p>&#8627; Lilly is deploying its GLP-1 windfall to build structural diversification — a prudent long-cycle strategy even if inflation makes the $7.8B price tag more expensive in real terms than headline numbers suggest.</p></div>
   </div>
+</div>
 
-  <!-- STORY 8: Anthropic IPO (HIGH) -->
-  <div class="story bl-high" onclick="this.classList.toggle('open')">
-    <div class="story-header">
-      <div class="story-num">08</div>
-      <div class="story-body">
-        <span class="imp-badge imp-high">HIGH</span>
-        <span class="tag tag-green">#ANTHROPIC</span>
-        <span class="tag tag-blue">#AI-IPO</span>
-        <span class="tag tag-purple">#OPENAI</span>
-        <h3>Anthropic Targets $60B+ IPO as Early as October 2026; OpenAI's $120B Round at $850B Valuation Sets the Benchmark</h3>
-        <p class="summary">Anthropic is in preliminary discussions with Goldman Sachs, JPMorgan, and Morgan Stanley about a potential IPO targeting a valuation above $60 billion — which would rank as the second-largest IPO in history after SpaceX. The company has engaged Wilson Sonsini as IPO counsel and is eyeing an October 2026 window. Anthropic's annualized revenue has surpassed $19 billion as of March 2026, more than doubling from $9 billion at end-2025. Separately, OpenAI closed a $120 billion funding round (backed by Amazon, Nvidia, and SoftBank) at an $850 billion post-money valuation and is also racing to list publicly before year-end near a $1 trillion valuation.</p>
-      </div>
-      <div class="toggle">&#9662;</div>
-    </div>
-    <div class="story-detail">
-      <div class="detail-section">
-        <div class="detail-label label-red">WHY IT MATTERS</div>
-        <p class="detail-text">Anthropic's IPO would be a defining valuation benchmark for the AI sector, providing public market price discovery on an asset class that currently trades entirely in private rounds with limited transparency. The race between Anthropic and OpenAI for public debut mirrors the mid-2010s Uber-Lyft competition — and carries similar risks: whoever IPOs second may face a less favorable market if the first company's post-debut performance disappoints. The extraordinary revenue growth figures (Anthropic doubling annualized revenue in one quarter; OpenAI crossing $25B annualized) reflect genuine enterprise AI demand, but public investors will scrutinize burn rates, compute costs, and margin trajectories in ways private backers have not. Critically, these IPOs will occur against an economic backdrop of war-driven inflation and macro uncertainty — conditions that have historically reduced appetite for high-multiple, early-profitability technology listings.</p>
-        <div class="takeaway"><p>Bottom line: The Anthropic-OpenAI IPO race will be the defining capital markets event for AI in 2026 — but the public market's willingness to sustain private-round valuations in a war-stressed macro environment remains the critical and unresolved question.</p></div>
-      </div>
-    </div>
+<div class="story" onclick="this.classList.toggle('open')">
+  <div class="story-hd"><span class="sn">12</span><div class="sb"><div class="badges"><span class="imp imp-m">Medium</span><span class="tag">Consumer Goods</span><span class="tag">M&amp;A</span></div><h3>McCormick Beats Q2 Earnings; Potential Unilever Deal Adds to Consumer Staples Consolidation Narrative</h3><p class="sum">Earnings beat driven by pricing power in spices and seasonings. Separate reports indicate preliminary merger discussions with Unilever, which has been under sustained investor pressure to streamline its portfolio.</p></div><span class="tog"></span></div>
+  <div class="story-dt">
+    <div class="ds"><div class="dl dl-r">Why It Matters</div><p class="dt">McCormick's beat demonstrates that branded consumer staples with genuine pricing power can pass through inflationary cost pressures even in a challenging macro environment — making the category attractive to acquirers during war-driven commodity price spikes. A McCormick-Unilever combination would be one of the largest consumer goods mergers in recent years, reshaping the global branded food landscape and giving the combined entity substantial distribution leverage in emerging markets where Unilever has deep penetration. Consumer staples M&amp;A tends to accelerate when uncertainty is high, as acquirers seek stable, cash-generative businesses. Warren Buffett's comment that he sold Apple "too soon" but would not buy "in this market" captures the broader defensive institutional sentiment.</p></div>
+    <div class="tk"><p>&#8627; McCormick's beat and M&amp;A speculation reflect a broader flight toward companies with durable pricing power and demand inelasticity — the qualities that become most valuable precisely when macro visibility is at its lowest.</p></div>
   </div>
+</div>
 
-  <!-- STORY 9: Apple Siri Gemini (MEDIUM) -->
-  <div class="story bl-medium" onclick="this.classList.toggle('open')">
-    <div class="story-header">
-      <div class="story-num">09</div>
-      <div class="story-body">
-        <span class="imp-badge imp-medium">MEDIUM</span>
-        <span class="tag tag-blue">#APPLE</span>
-        <span class="tag tag-green">#GEMINI</span>
-        <span class="tag tag-gray">#SIRI</span>
-        <h3>Apple-Google Gemini Alliance Deepens Ahead of WWDC 2026; $1B Deal to Power Context-Aware Next-Gen Siri</h3>
-        <p class="summary">Apple is finalizing a reimagined Siri powered by Google's Gemini models through a reported $1 billion licensing arrangement, with a full public reveal scheduled at the Worldwide Developers Conference on June 8. The new Siri will feature on-screen awareness, cross-app deep integration, and understanding of personal context — capabilities Apple concedes require foundation models beyond what it can build in-house on iOS 27's timeline. Apple shares rose 2.6% on renewed investor optimism about the company's AI competitive position.</p>
-      </div>
-      <div class="toggle">&#9662;</div>
-    </div>
-    <div class="story-detail">
-      <div class="detail-section">
-        <div class="detail-label label-red">WHY IT MATTERS</div>
-        <p class="detail-text">The Apple-Google AI alignment is strategically significant precisely because it inverts their historic relationship: for decades, Google paid Apple roughly $20 billion annually to remain the default iOS search engine; now Apple is paying Google $1 billion for access to AI capabilities. For Google, embedding Gemini into every iPhone sold globally strengthens its AI distribution moat at a time when its search business faces structural pressure from AI-native competitors. For Apple, the deal represents an acknowledgment that building world-class foundation models in-house is beyond its current capabilities on the timelines enterprise and consumer users demand — a significant strategic concession from a company built on end-to-end control. The continued parallel partnership with OpenAI (ChatGPT powers some Apple Intelligence features) suggests Apple is deliberately avoiding single-vendor AI dependency, maintaining competitive leverage over multiple model providers.</p>
-        <div class="takeaway"><p>Bottom line: Apple's embrace of Gemini marks a structural realignment of the AI landscape's distribution hierarchy — and confirms that even the most vertically integrated technology company in history has concluded that foundation model development is too expensive and complex to own outright.</p></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SECTOR 4: BUSINESS & MARKETS -->
-  <div class="sector">
-    <h2><span class="sector-icon">&#128202;</span>Business &amp; Markets</h2>
-    <div class="sector-count">3 STORIES &nbsp;&#183;&nbsp; 0 CRITICAL</div>
-  </div>
-
-  <!-- STORY 10: Wall Street Rally (HIGH) -->
-  <div class="story bl-high" onclick="this.classList.toggle('open')">
-    <div class="story-header">
-      <div class="story-num">10</div>
-      <div class="story-body">
-        <span class="imp-badge imp-high">HIGH</span>
-        <span class="tag tag-green">#MARKETS</span>
-        <span class="tag tag-yellow">#WAR-RISK</span>
-        <span class="tag tag-blue">#EQUITIES</span>
-        <h3>Wall Street Posts Biggest Rally Since May: Dow Surges 1,109 Points as Trump Signals Iran War May Not Last "Much Longer"</h3>
-        <p class="summary">US equities staged their strongest single-session advance in months on March 31, with the Dow Jones gaining 1,109 points (+2.5%), the S&amp;P 500 rising 2.9%, and the Nasdaq advancing 3.8% — led by Nvidia (+4.8%), Microsoft (+3.2%), and Apple (+2.6%). The catalyst was President Trump signaling willingness to end the military campaign against Iran even if Hormuz remains partially closed, which markets interpreted as opening a pathway to a near-term ceasefire before the April 6 deadline.</p>
-      </div>
-      <div class="toggle">&#9662;</div>
-    </div>
-    <div class="story-detail">
-      <div class="detail-section">
-        <div class="detail-label label-red">WHY IT MATTERS</div>
-        <p class="detail-text">The scale of the rally — one of the largest single sessions in months — reflects how deeply war risk has been priced into equity valuations since February 28 and how acutely institutional investors are tracking every diplomatic signal. Critically, the rally happened while the strait remains physically closed and Iran has publicly rejected the US peace framework — meaning the move is driven entirely by expectations of future resolution rather than any change in facts on the ground. This creates a significant asymmetric risk: if April 6 passes without meaningful progress, the reversal of today's gains could be sharp and disorderly. The Nvidia and Microsoft outperformance confirms that institutional money continues to view AI infrastructure capex as a structural trend that transcends macro headwinds — a conviction that has only grown stronger as the year has progressed despite the war.</p>
-        <div class="takeaway"><p>Bottom line: March 31's rally is hope priced as certainty — the underlying geopolitical situation remains dangerously unresolved, and the risk-reward for investors who chase the March 31 gains is asymmetrically unfavorable heading into the April 6 deadline.</p></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- STORY 11: Eli Lilly / Centessa (MEDIUM) -->
-  <div class="story bl-medium" onclick="this.classList.toggle('open')">
-    <div class="story-header">
-      <div class="story-num">11</div>
-      <div class="story-body">
-        <span class="imp-badge imp-medium">MEDIUM</span>
-        <span class="tag tag-green">#PHARMA-MA</span>
-        <span class="tag tag-blue">#ELI-LILLY</span>
-        <span class="tag tag-gray">#BIOTECH</span>
-        <h3>Eli Lilly Pays $7.8 Billion for Centessa Pharmaceuticals, Diversifying Beyond GLP-1 Blockbusters</h3>
-        <p class="summary">Eli Lilly announced the acquisition of Centessa Pharmaceuticals for $7.8 billion, adding a pipeline of rare disease candidates to complement its blockbuster GLP-1 weight-loss franchise (Mounjaro, Zepbound). Lilly shares rose 3% on the announcement as investors welcomed the strategic rationale of diversifying revenue streams ahead of potential patent cliffs on the company's core obesity and diabetes drugs.</p>
-      </div>
-      <div class="toggle">&#9662;</div>
-    </div>
-    <div class="story-detail">
-      <div class="detail-section">
-        <div class="detail-label label-red">WHY IT MATTERS</div>
-        <p class="detail-text">Lilly's $7.8 billion deal continues a broad wave of large-cap pharma acquisitions as companies race to diversify before patent expirations threaten their core revenue streams. Rare disease drugs are a particularly attractive M&amp;A target: they command high pricing power, face limited generic competition post-patent, benefit from accelerated regulatory pathways (orphan drug designations), and generate durable royalty-like revenue profiles. Lilly's willingness to deploy significant capital despite war-driven macro uncertainty signals confidence that its GLP-1 cash flows will remain robust enough to finance aggressive expansion across economic conditions. The deal also comes as healthcare coverage debates continue in Washington — a political risk that Lilly's diversification strategy partially hedges by reducing exposure to any single drug class facing pricing scrutiny.</p>
-        <div class="takeaway"><p>Bottom line: Lilly is deploying its GLP-1 windfall to build structural diversification — a prudent long-cycle capital allocation strategy even if war-driven inflation makes the $7.8B acquisition cost more expensive in real terms than headline numbers suggest.</p></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- STORY 12: McCormick / Unilever (MEDIUM) -->
-  <div class="story bl-medium" onclick="this.classList.toggle('open')">
-    <div class="story-header">
-      <div class="story-num">12</div>
-      <div class="story-body">
-        <span class="imp-badge imp-medium">MEDIUM</span>
-        <span class="tag tag-yellow">#CONSUMER-GOODS</span>
-        <span class="tag tag-orange">#MA</span>
-        <span class="tag tag-gray">#MCCORMICK</span>
-        <h3>McCormick Beats Q2 Earnings; Potential Unilever Deal Adds to Consumer Staples Consolidation Narrative</h3>
-        <p class="summary">McCormick &amp; Company surpassed Q2 2026 earnings expectations, driven by pricing power in its core spices and seasonings franchise. Shares climbed on the earnings beat and on separate reports that McCormick is in preliminary talks with consumer goods giant Unilever about a potential merger or large-scale acquisition. No deal terms have been confirmed by either company, though analysts note Unilever has been under sustained investor pressure to streamline its sprawling portfolio.</p>
-      </div>
-      <div class="toggle">&#9662;</div>
-    </div>
-    <div class="story-detail">
-      <div class="detail-section">
-        <div class="detail-label label-red">WHY IT MATTERS</div>
-        <p class="detail-text">McCormick's earnings beat demonstrates that branded consumer staples with genuine pricing power can pass through inflationary cost pressures even in a challenging macro environment — making the category attractive to acquirers during war-driven commodity price spikes. A McCormick-Unilever combination would be one of the largest consumer goods mergers in recent years, reshaping the global branded food landscape and giving the combined entity substantial distribution leverage in emerging markets where Unilever has deep penetration but McCormick lacks presence. The timing reflects a broader pattern: consumer staples M&amp;A accelerates when macro uncertainty is high, as acquirers seek stable, cash-generative businesses to balance their portfolios against cyclical exposure. The Warren Buffett observation that he would buy more Apple "but not in this market" captures the defensive institutional sentiment that makes McCormick-type businesses increasingly valuable as macro headwinds mount.</p>
-        <div class="takeaway"><p>Bottom line: McCormick's beat and M&amp;A speculation reflect a broader investor flight toward companies with durable pricing power and demand inelasticity — the qualities that become most valuable precisely when macroeconomic visibility is at its lowest, as it is today.</p></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    Daily Intelligence Briefing &nbsp;&middot;&nbsp; Generated by Claude AI &nbsp;&middot;&nbsp; March 31, 2026<br>
-    Sources: Fortune, Al Jazeera, Bloomberg, CNBC, 24/7 Wall St., TheStreet, NPR, Wikipedia (2026 Iran war / Hormuz crisis), EIA STEO, IEA, Britannica, winbuzzer.com, mlq.ai, TechCrunch, Washington Times, Rolling Out, Yahoo Finance, Pittsburgh Post-Gazette, Eurasia Business News, The Federal, KPIAS Academy, Creati.ai, ainvest.com, Democracy Now
-  </div>
+<div class="footer">The World AI News &middot; Daily Intelligence Briefing &middot; Generated by AI &middot; March 31, 2026<br>Sources: Fortune &middot; Al Jazeera &middot; Bloomberg &middot; CNBC &middot; NPR &middot; Wikipedia &middot; EIA &middot; IEA &middot; TechCrunch &middot; Yahoo Finance &middot; Reuters &middot; Washington Times</div>
 
 </div>
 </body>
